@@ -3,6 +3,7 @@
   "use strict";
 
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const hasIO = "IntersectionObserver" in window;
 
   /* ---- 页脚年份 ---- */
   const year = document.getElementById("year");
@@ -10,9 +11,24 @@
     year.textContent = new Intl.DateTimeFormat("zh-CN", { year: "numeric" }).format(new Date());
   }
 
+  /* ---- 数字补间（count-up / ab 切换共用） ---- */
+  const tween = (el, to, { suffix = "", duration = 1100 } = {}) => {
+    const from = Number(String(el.dataset.now ?? el.textContent).replace(/[^\d.]/g, "")) || 0;
+    const start = performance.now();
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const val = Math.round(from + (to - from) * easeOut(p));
+      el.textContent = val + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.dataset.now = String(to);
+    };
+    requestAnimationFrame(tick);
+  };
+
   /* ---- 滚动入场动画 ---- */
   const revealEls = document.querySelectorAll(".reveal");
-  if (prefersReduced.matches || !("IntersectionObserver" in window)) {
+  if (prefersReduced.matches || !hasIO) {
     revealEls.forEach((el) => el.classList.add("in"));
   } else {
     const io = new IntersectionObserver(
@@ -30,36 +46,137 @@
   }
 
   /* ---- 首屏战绩数字 count-up ---- */
-  const counters = document.querySelectorAll(".count[data-count]");
-  const runCount = (el) => {
-    const target = Number(el.dataset.count) || 0;
-    const suffix = el.dataset.suffix || "";
-    const duration = 1400;
-    const start = performance.now();
-    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
-    const tick = (now) => {
-      const p = Math.min((now - start) / duration, 1);
-      el.textContent = Math.round(easeOut(p) * target) + suffix;
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  };
-
-  if (prefersReduced.matches || !("IntersectionObserver" in window)) {
-    /* 保持 HTML 中的静态最终值 */
-  } else {
+  if (!prefersReduced.matches && hasIO) {
     const countIO = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            runCount(entry.target);
-            countIO.unobserve(entry.target);
+            const el = entry.target;
+            tween(el, Number(el.dataset.count) || 0, { suffix: el.dataset.suffix || "" });
+            countIO.unobserve(el);
           }
         }
       },
       { threshold: 0.6 }
     );
-    counters.forEach((el) => countIO.observe(el));
+    document.querySelectorAll(".count[data-count]").forEach((el) => countIO.observe(el));
+  }
+
+  /* ---- 顶部滚动进度条 ---- */
+  const progressBar = document.querySelector(".progress-bar");
+  if (progressBar) {
+    let ticking = false;
+    const update = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      progressBar.style.transform = `scaleX(${ratio})`;
+      ticking = false;
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      },
+      { passive: true }
+    );
+    update();
+  }
+
+  /* ---- A/B 方案切换器（快手） ---- */
+  const abDemo = document.querySelector(".ab-demo");
+  if (abDemo) {
+    const btns = abDemo.querySelectorAll(".ab-btn");
+    const panels = abDemo.querySelectorAll("[data-ab-panel]");
+    const value = abDemo.querySelector("[data-ab-value]");
+    const targets = { control: 11, treatment: 39 };
+
+    btns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const key = btn.dataset.ab;
+        btns.forEach((b) => b.classList.toggle("is-active", b === btn));
+        panels.forEach((p) => {
+          p.hidden = p.dataset.abPanel !== key;
+        });
+        if (value) {
+          if (prefersReduced.matches) value.textContent = targets[key] + "%";
+          else tween(value, targets[key], { suffix: "%" });
+        }
+      });
+    });
+  }
+
+  /* ---- Agent 对话演示（猎聘）：逐条入场 + 重放 ---- */
+  const chatWindow = document.querySelector(".chat-window");
+  if (chatWindow && !prefersReduced.matches && hasIO) {
+    const msgs = Array.from(chatWindow.querySelectorAll(".msg"));
+    const tags = Array.from(chatWindow.querySelectorAll(".chat-tag"));
+    const replayBtn = document.querySelector(".chat-replay");
+    let timers = [];
+
+    const play = () => {
+      timers.forEach(clearTimeout);
+      timers = [];
+      msgs.forEach((m) => m.classList.remove("is-in"));
+      tags.forEach((t) => t.classList.remove("is-in"));
+      chatWindow.classList.add("chat-armed");
+
+      let delay = 400;
+      msgs.forEach((m) => {
+        delay += m.classList.contains("msg-final") ? 900 : 700;
+        timers.push(setTimeout(() => m.classList.add("is-in"), delay));
+      });
+      tags.forEach((t, i) => {
+        timers.push(setTimeout(() => t.classList.add("is-in"), delay + 350 + i * 160));
+      });
+    };
+
+    const chatIO = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            play();
+            chatIO.disconnect();
+          }
+        }
+      },
+      { threshold: 0.35 }
+    );
+    chatIO.observe(chatWindow);
+
+    if (replayBtn) replayBtn.addEventListener("click", play);
+  }
+
+  /* ---- Skill 流水线依次点亮（百度） ---- */
+  const pipelines = document.querySelectorAll(".pipeline");
+  if (pipelines.length && !prefersReduced.matches && hasIO) {
+    pipelines.forEach((pipe) => {
+      const nodes = Array.from(pipe.querySelectorAll(".pipe-node"));
+      const links = Array.from(pipe.querySelectorAll(".pipe-link"));
+
+      const pipeIO = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            pipeIO.disconnect();
+            pipe.classList.add("pipe-armed");
+            nodes.forEach((n) => n.classList.remove("is-lit"));
+            links.forEach((l) => l.classList.remove("is-lit"));
+            nodes.forEach((n, i) => {
+              setTimeout(() => n.classList.add("is-lit"), 350 + i * 550);
+            });
+            links.forEach((l, i) => {
+              setTimeout(() => l.classList.add("is-lit"), 350 + i * 550 + 380);
+            });
+          }
+        },
+        { threshold: 0.4 }
+      );
+      pipeIO.observe(pipe);
+    });
   }
 
   /* ---- 导航当前区域高亮（scroll spy） ---- */
@@ -68,7 +185,7 @@
     .map((link) => document.querySelector(link.getAttribute("href")))
     .filter(Boolean);
 
-  if (sections.length && "IntersectionObserver" in window) {
+  if (sections.length && hasIO) {
     const spy = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {

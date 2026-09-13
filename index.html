@@ -12,6 +12,8 @@
 <body>
   <div class="bg" aria-hidden="true"></div>
 
+  <div class="progress" aria-hidden="true"><span class="progress-bar"></span></div>
+
   <a class="skip-link" href="#main">跳到主要内容</a>
 
   <!-- ===== 导航 ===== -->
@@ -203,20 +205,23 @@
                 <li class="flow-sep" aria-hidden="true">→</li>
                 <li class="flow-step">发布作品</li>
               </ol>
-              <p class="viz-label viz-label-gap">行为分层 · 分层策略</p>
-              <div class="module-grid module-grid-3">
-                <div class="mod">
-                  <p class="mod-name">新用户</p>
-                  <p class="mod-sub">入口文案引导</p>
+              <p class="viz-label viz-label-gap">方案对比 · 点击切换实验组</p>
+              <div class="ab-demo">
+                <div class="ab-toggle" role="group" aria-label="切换 A/B 实验方案">
+                  <button type="button" class="ab-btn is-active" data-ab="control">A · 固定模板</button>
+                  <button type="button" class="ab-btn" data-ab="treatment">B · 主动诊断＋个性化</button>
                 </div>
-                <div class="mod hot">
-                  <p class="mod-name">已查看数据 · 未提问</p>
-                  <p class="mod-sub">触达时机＋个性化提问</p>
+                <div class="ab-panel" aria-live="polite">
+                  <blockquote class="ab-quote" data-ab-panel="control">
+                    <p>「关于作品数据的问题，都可以问我。」</p>
+                    <footer>通用入口文案 — 用户看完数据，仍不知道问什么</footer>
+                  </blockquote>
+                  <blockquote class="ab-quote" data-ab-panel="treatment" hidden>
+                    <p>「你的完播率低于同层作者，建议从前 3 秒开头钩子入手；互动率偏弱，可在结尾追加提问引导。」</p>
+                    <footer>基于用户最弱指标主动生成 — 建议可直接执行（示意）</footer>
+                  </blockquote>
                 </div>
-                <div class="mod">
-                  <p class="mod-name">已提问 · 未发布</p>
-                  <p class="mod-sub">建议可执行性优化</p>
-                </div>
+                <p class="ab-stat">该方案提问 UV 率 <strong class="ab-value" data-ab-value>11%</strong></p>
               </div>
             </div>
           </div>
@@ -295,24 +300,16 @@
                 <li class="flow-sep" aria-hidden="true">→</li>
                 <li class="flow-step">触达</li>
               </ol>
-              <p class="viz-label viz-label-gap">猎头 Know-How · 四组 Skill 拆解</p>
-              <div class="module-grid">
-                <div class="mod hot">
-                  <p class="mod-name">意图澄清</p>
-                  <p class="mod-sub">+15PP · 主动追问</p>
+              <p class="viz-label viz-label-gap">Agent 意图澄清 · 交互演示</p>
+              <div class="chat-demo">
+                <div class="chat-window" aria-live="polite">
+                  <p class="chat-note">示意 · 猎头澄清经验 Skill 化，由 Agent 主动追问</p>
+                  <div class="msg msg-user">找个懂增长的人</div>
+                  <div class="msg msg-agent">收到，先确认几个关键约束：<br>① 偏投放、内容还是商业化增长？<br>② 期望年限区间？<br>③ 行业背景有要求吗？</div>
+                  <div class="msg msg-user">内容增长，3 年左右，最好有短视频行业经验</div>
+                  <div class="msg msg-agent msg-final">约束已补全<span class="chat-tag">内容增长</span><span class="chat-tag">3 年+</span><span class="chat-tag">短视频</span><span class="chat-done">→ 生成精准搜索</span></div>
                 </div>
-                <div class="mod">
-                  <p class="mod-name">人才搜索</p>
-                  <p class="mod-sub">约束补全检索</p>
-                </div>
-                <div class="mod">
-                  <p class="mod-name">触达</p>
-                  <p class="mod-sub">候选人沟通</p>
-                </div>
-                <div class="mod">
-                  <p class="mod-name">看板管理</p>
-                  <p class="mod-sub">流程跟踪</p>
-                </div>
+                <button type="button" class="chat-replay">↻ 重新演示</button>
               </div>
             </div>
           </div>
@@ -393,23 +390,30 @@
                 <li class="flow-sep" aria-hidden="true">→</li>
                 <li class="flow-step">发布</li>
               </ol>
-              <p class="viz-label viz-label-gap">生成流程 · 四组 Skill 拆解</p>
-              <div class="module-grid">
-                <div class="mod hot">
-                  <p class="mod-name">需求理解</p>
-                  <p class="mod-sub">场景推荐＋Todo 拆解</p>
+              <p class="viz-label viz-label-gap">生成流程 · Skill 流水线</p>
+              <div class="pipeline">
+                <div class="pipe-node">
+                  <span class="pipe-dot" aria-hidden="true"></span>
+                  <p class="pipe-name">需求理解</p>
+                  <p class="pipe-sub">场景推荐＋Todo 拆解</p>
                 </div>
-                <div class="mod">
-                  <p class="mod-name">执行计划生成</p>
-                  <p class="mod-sub">PRD 结构化</p>
+                <span class="pipe-link" aria-hidden="true"></span>
+                <div class="pipe-node">
+                  <span class="pipe-dot" aria-hidden="true"></span>
+                  <p class="pipe-name">执行计划生成</p>
+                  <p class="pipe-sub">输出结构化 PRD</p>
                 </div>
-                <div class="mod">
-                  <p class="mod-name">代码生成</p>
-                  <p class="mod-sub">无代码应用构建</p>
+                <span class="pipe-link" aria-hidden="true"></span>
+                <div class="pipe-node">
+                  <span class="pipe-dot" aria-hidden="true"></span>
+                  <p class="pipe-name">代码生成</p>
+                  <p class="pipe-sub">无代码应用构建</p>
                 </div>
-                <div class="mod">
-                  <p class="mod-name">UI 渲染</p>
-                  <p class="mod-sub">页面实时呈现</p>
+                <span class="pipe-link" aria-hidden="true"></span>
+                <div class="pipe-node">
+                  <span class="pipe-dot" aria-hidden="true"></span>
+                  <p class="pipe-name">UI 渲染</p>
+                  <p class="pipe-sub">页面实时呈现</p>
                 </div>
               </div>
             </div>

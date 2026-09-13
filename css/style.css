@@ -337,7 +337,6 @@ a { color: inherit; }
   height: 100%;
   object-fit: cover;
   object-position: center 18%;
-  filter: grayscale(1);
 }
 
 /* ---- 快速跳转三段经历的小方块 ---- */

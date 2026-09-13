@@ -1488,3 +1488,209 @@ a.contact-item:hover {
 
   .footer { padding: 0 22px 36px; }
 }
+
+/* ============================================================
+   Bento Grid 便当盒布局覆盖层
+   MODULAR · FLEXIBLE — 模块化，一切尽在掌握
+   浅灰底 × 拼贴卡片格 × 深浅交替 × 紧凑间隙
+   ============================================================ */
+
+:root {
+  --bg: #edf0f4;
+  --bento-dark: #16213f;
+  --bento-tint: #f6f8fb;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+}
+
+body { background: var(--bg); }
+.bg { background: none; }
+
+/* ---- 导航：浮岛胶囊格 ---- */
+.nav {
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-card);
+}
+.nav-inner { max-width: 1240px; }
+
+/* ---- Hero：三块拼贴 ---- */
+.hero { padding: calc(var(--nav-h) + 54px) 26px 44px; }
+.hero-grid {
+  max-width: 1240px;
+  gap: 14px;
+  grid-template-columns: minmax(340px, 46fr) minmax(300px, 36fr) minmax(200px, 18fr);
+}
+.hero::before { background: none; }
+
+/* 姓名格：深蓝底反白 */
+.hero-left {
+  background: var(--bento-dark);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 3vw, 42px);
+  box-shadow: 0 20px 44px -20px rgba(22, 33, 63, 0.45);
+}
+.eyebrow {
+  background: rgba(255, 255, 255, 0.1);
+  color: #8ecbff;
+}
+.eyebrow-dot::after { display: none; }
+.hero-name { color: #fff; }
+.hero-role { color: rgba(255, 255, 255, 0.92); }
+.hero-role em { color: #8ecbff; }
+.hero-desc { color: rgba(255, 255, 255, 0.7); border-left-color: rgba(255, 255, 255, 0.2); }
+
+.hero-cta .btn-ghost {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+.hero-cta .btn-ghost:hover { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.4); }
+
+.hero-metrics { border-top-color: rgba(255, 255, 255, 0.16); gap: clamp(20px, 2.4vw, 34px); }
+.metric-value { color: #8ecbff; }
+.metric-label { color: rgba(255, 255, 255, 0.88); }
+.metric-from { color: rgba(255, 255, 255, 0.45); }
+.metric-src { color: rgba(255, 255, 255, 0.4); }
+
+/* 头像格：白卡 */
+.hero-visual {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 30px 24px 22px;
+  box-shadow: var(--shadow-card);
+}
+.ring { border-color: rgba(31, 94, 255, 0.28); width: min(340px, 88%); }
+.avatar-frame { border: 5px solid #fff; }
+
+/* 导览格 */
+.hero-aside {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
+  box-shadow: var(--shadow-card);
+  gap: 18px;
+}
+.aside-list a:hover { background: var(--bento-tint); }
+
+/* ---- 跑马灯：胶囊格 ---- */
+.marquee {
+  max-width: 1240px;
+  margin: 26px auto;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---- 章节紧凑化 ---- */
+.section { max-width: 1240px; padding-top: clamp(44px, 6vh, 68px); }
+
+/* ---- 经历：头格 + 卡体 + 指标小格 ---- */
+.exp-head {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px 28px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 14px;
+}
+.exp-body {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* impact 三项 → 独立小格 */
+.exp-impact {
+  border-top: none;
+  background: none;
+  padding: 6px 0 18px;
+  gap: 10px;
+}
+.impact-item {
+  background: var(--bento-tint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px 20px 14px;
+}
+.impact-num { color: var(--accent); }
+
+/* 方法画布格 */
+.cv-cell { border-radius: var(--radius-md); }
+.cv-tag { color: var(--accent-deep); }
+.cv-note { border-top: 1px dashed var(--line); }
+.mod { border-radius: 12px; background: var(--surface); }
+.mod.hot { background: var(--accent); border-color: var(--accent); }
+.num-b { border-radius: 12px; }
+.seg { border-radius: 12px; }
+.io-out { border-radius: 12px; }
+.flow-step { border-radius: 999px; }
+.ab-toggle { border-radius: 999px; }
+.ab-btn { border-radius: 999px; }
+.ab-btn.is-active { background: var(--accent); }
+.ab-quote { border-radius: var(--radius-md); }
+.chat-window { border-radius: var(--radius-md); }
+.msg { border-radius: 14px; }
+.chat-replay { border-radius: 999px; }
+.pipe-node { border-radius: 12px; }
+
+.exp-result-text {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: var(--bento-tint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.exp-result-label { background: var(--accent); }
+
+/* ---- 能力 / 教育 / 联系：格子拼贴 ---- */
+.skill-grid { gap: 14px; }
+.skill-col { border-radius: var(--radius-lg); }
+.skill-col:nth-child(1) { background: var(--surface); }
+.skill-col:nth-child(2) { background: var(--bento-dark); border-color: var(--bento-dark); color: #fff; }
+.skill-col:nth-child(2) .skill-en,
+.skill-col:nth-child(2) .mod-sub { color: rgba(255, 255, 255, 0.55); }
+.skill-col:nth-child(2) .tag {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+}
+.skill-col:nth-child(2) .skill-num { -webkit-text-stroke-color: rgba(142, 203, 255, 0.7); }
+.skill-col:nth-child(3) { background: var(--accent-soft); border-color: rgba(31, 94, 255, 0.18); }
+
+.edu-card { border-radius: var(--radius-lg); }
+.contact-grid { gap: 14px; }
+.contact-item { border-radius: var(--radius-lg); }
+.contact-note {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 12px 26px;
+  width: fit-content;
+  margin: 24px auto 0;
+  box-shadow: var(--shadow-card);
+}
+
+.footer { max-width: 1240px; }
+
+/* ---- 响应式 ---- */
+@media (max-width: 1080px) {
+  .hero-grid { grid-template-columns: minmax(300px, 48fr) minmax(300px, 42fr); }
+}
+@media (max-width: 760px) {
+  .hero { padding: calc(var(--nav-h) + 44px) 14px 36px; }
+  .hero-grid { gap: 12px; }
+  .exp-head { padding: 18px 20px; border-radius: var(--radius-md); }
+  .exp-body { padding: 20px 16px; }
+  .marquee { border-radius: var(--radius-md); margin: 18px 14px; }
+  .section { padding-inline: 14px; }
+}

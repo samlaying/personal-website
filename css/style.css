@@ -1488,3 +1488,231 @@ a.contact-item:hover {
 
   .footer { padding: 0 22px 36px; }
 }
+
+/* ============================================================
+   Editorial 杂志编辑风覆盖层
+   STORIES — 用故事，看见人与世界
+   暖纸底 × 衬线标题 × 赭红点缀 × 双细线 × 栏目眉
+   ============================================================ */
+
+:root {
+  --bg: #faf6ee;
+  --surface: #fffdf7;
+  --ink: #1f1b16;
+  --ink-2: #5c554a;
+  --ink-3: #948b7d;
+  --accent: #a63c2e;
+  --accent-deep: #8a2f24;
+  --accent-soft: #f6e9e4;
+  --line: #e5dcc9;
+  --shadow-card: 0 1px 0 rgba(31, 27, 22, 0.05);
+  --shadow-lift: 0 2px 0 rgba(31, 27, 22, 0.07);
+  --radius-lg: 6px;
+  --radius-md: 4px;
+  --font-serif: Georgia, "Times New Roman", "Songti SC", "Noto Serif SC",
+    "Source Han Serif SC", "STSong", serif;
+}
+
+body {
+  background:
+    radial-gradient(900px 500px at 85% -6%, rgba(166, 60, 46, 0.05), transparent 60%),
+    radial-gradient(700px 460px at 0% 40%, rgba(31, 27, 22, 0.04), transparent 60%),
+    var(--bg);
+}
+
+.bg { background: none; }
+
+/* ---- 关闭 3D 极光（JS 判空静默降级） ---- */
+.hero-aurora { display: none; }
+.hero::before {
+  background:
+    radial-gradient(820px 420px at 82% -10%, rgba(166, 60, 46, 0.06), transparent 62%);
+}
+
+/* ---- 杂志刊头 ---- */
+.masthead {
+  position: relative;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto 36px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 11px 2px;
+  border-block: 3px double rgba(31, 27, 22, 0.4);
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.masthead span + span { color: var(--accent); }
+
+/* ---- 导航 ---- */
+.nav {
+  background: rgba(250, 246, 238, 0.88);
+  border-bottom: 1px solid var(--line);
+}
+.logo { font-family: var(--font-serif); font-weight: 700; letter-spacing: 0.22em; }
+.logo-dot { background: var(--accent); }
+.nav-link::after { background: var(--accent); }
+
+/* ---- Hero ---- */
+.hero-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.hero-role { font-family: var(--font-serif); letter-spacing: 0.1em; }
+.hero-role em { color: var(--accent); font-style: italic; }
+.hero-desc { border-left: 2px solid var(--accent); }
+.hero-desc::first-letter {
+  font-family: var(--font-serif);
+  font-size: 2.1em;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  padding-right: 4px;
+  float: left;
+  margin-top: 3px;
+}
+
+.eyebrow {
+  background: none;
+  padding: 0;
+  font-family: var(--font-serif);
+  letter-spacing: 0.34em;
+  color: var(--accent-deep);
+}
+.eyebrow-dot { display: none; }
+
+.avatar-frame {
+  border: 8px solid var(--surface);
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--line), 0 24px 56px -26px rgba(31, 27, 22, 0.35);
+}
+.avatar { filter: none; } /* 保持彩色 */
+.ring { border: 1.5px dashed rgba(166, 60, 46, 0.32); }
+.chip {
+  border-radius: 4px;
+  font-family: var(--font-serif);
+}
+.chip::before { background: var(--accent); }
+
+.aside-list .num { color: var(--accent); font-family: var(--font-serif); }
+
+/* ---- 按钮 ---- */
+.btn { border-radius: 4px; letter-spacing: 0.12em; }
+.btn-accent { background: var(--accent); box-shadow: none; }
+.btn-accent:hover { background: var(--accent-deep); transform: none; }
+
+/* ---- 章节头：栏目眉 ---- */
+.sec-titles h2 { font-family: var(--font-serif); font-weight: 700; letter-spacing: 0.14em; }
+.sec-en { color: var(--accent); }
+.sec-num {
+  font-family: var(--font-serif);
+  -webkit-text-stroke: 1.2px rgba(166, 60, 46, 0.5);
+}
+.sec-line { background: none; border-top: 3px double var(--line); height: 0; margin-bottom: 6px; }
+
+/* ---- 跑马灯：书眉感 ---- */
+.marquee { border-block: 1px solid var(--line); }
+.marquee-track span { font-family: var(--font-serif); letter-spacing: 0.24em; color: var(--ink-2); }
+.marquee-track .star { color: var(--accent); }
+
+/* ---- 经历 ---- */
+.exp-company-en { color: var(--accent); }
+.exp-date { border-radius: 4px; font-family: var(--font-serif); }
+
+.exp-project-title { font-family: var(--font-serif); font-weight: 700; }
+
+/* pull-quote 化项目定位句 */
+.exp-project-brief {
+  border-left: none;
+  border-block: 1px solid var(--line);
+  padding: 16px 6px;
+  font-family: var(--font-serif);
+  font-size: 16.5px;
+  line-height: 1.9;
+  color: var(--ink);
+}
+.exp-project-brief::before { content: "「"; color: var(--accent); }
+.exp-project-brief::after { content: "」"; color: var(--accent); }
+
+.impact-num { font-family: var(--font-serif); color: var(--accent); }
+.impact-from { color: var(--ink-3); }
+
+.cv-cell { background: var(--surface); border-radius: 4px; }
+.cv-tag { color: var(--accent-deep); font-family: var(--font-serif); letter-spacing: 0.24em; }
+.cv-note {
+  border-top: 1px solid var(--line);
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+.mini-fill { background: var(--accent) !important; }
+.mini-fill.dim { background: #c4b8a4 !important; }
+
+.seg.hot { background: var(--accent); border-color: var(--accent); }
+.io-out { background: var(--accent); border-radius: 4px; }
+.io-chip.hot { background: var(--accent-soft); color: var(--accent-deep); border-color: rgba(166, 60, 46, 0.35); }
+.num-b b { color: var(--accent); font-family: var(--font-serif); }
+.mod.hot { background: var(--accent); border-color: var(--accent); }
+.mod { border-radius: 4px; }
+
+.flow-step { border-radius: 4px; font-family: var(--font-serif); }
+.flow-step.hot { background: var(--accent-soft); color: var(--accent-deep); border-color: rgba(166, 60, 46, 0.4); }
+
+.exp-result-text {
+  border-top: 3px double var(--line);
+  margin-top: 28px;
+  padding-top: 16px;
+  font-family: var(--font-serif);
+}
+.exp-result-label { background: var(--accent); border-radius: 2px; letter-spacing: 0.2em; }
+
+/* ---- A/B 与对话 ---- */
+.ab-btn { border-radius: 4px; font-family: var(--font-serif); }
+.ab-btn.is-active { background: var(--accent); }
+.ab-quote { border-radius: 4px; font-family: var(--font-serif); }
+[data-ab-panel="treatment"] { background: var(--accent-soft); border-color: rgba(166, 60, 46, 0.3); }
+[data-ab-panel="treatment"] footer { color: var(--accent-deep); }
+.ab-value { color: var(--accent); font-family: var(--font-serif); }
+
+.chat-window { border-radius: 4px; background: var(--surface); }
+.chat-note { font-family: var(--font-serif); letter-spacing: 0.16em; }
+.msg { border-radius: 4px; font-family: var(--font-serif); }
+.msg-user { background: var(--ink); }
+.msg-final .chat-tag { background: var(--accent-soft); color: var(--accent-deep); border-color: rgba(166, 60, 46, 0.35); }
+.chat-done { color: var(--accent); }
+.chat-replay { border-radius: 4px; font-family: var(--font-serif); }
+
+.pipeline .pipe-node { border-radius: 4px; }
+.pipeline .pipe-node.is-lit { border-color: rgba(166, 60, 46, 0.45); }
+.pipeline .pipe-node.is-lit .pipe-dot { background: var(--accent); box-shadow: 0 0 0 4px rgba(166, 60, 46, 0.14); }
+.pipeline .pipe-link.is-lit { background: var(--accent); }
+
+/* ---- 能力 / 教育 / 联系 ---- */
+.skill-num { -webkit-text-stroke: 1px rgba(166, 60, 46, 0.55); }
+.skill-col h3 { font-family: var(--font-serif); }
+.skill-col, .edu-card, .contact-item { border-radius: 6px; }
+.tag { border-radius: 3px; background: var(--surface); }
+.rank-badge { background: var(--accent); border-radius: 3px; font-family: var(--font-serif); }
+.edu-main h3 { font-family: var(--font-serif); }
+.contact-value { font-family: var(--font-serif); }
+a.contact-item:hover { border-color: rgba(166, 60, 46, 0.4); }
+
+/* ---- 页脚：期刊版权行 ---- */
+.footer-text { font-family: var(--font-serif); }
+.progress-bar { background: var(--accent); }
+::selection { background: var(--accent); }
+:focus-visible { outline-color: var(--accent); }
+
+/* ---- 响应式 ---- */
+@media (max-width: 760px) {
+  .masthead { font-size: 9.5px; letter-spacing: 0.14em; gap: 8px; }
+  .masthead span:nth-child(2) { overflow: hidden; text-overflow: ellipsis; }
+}

@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+*.log
+/tmp_*
+
+# 设计参考图（非站点文件）
+8ae9b03e923a41dd35e23f8d5e979a2e.png

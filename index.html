@@ -33,6 +33,7 @@
   <main id="main">
     <!-- ===== Hero ===== -->
     <section class="hero" id="top">
+      <canvas class="hero-aurora" id="hero-aurora" aria-hidden="true"></canvas>
       <div class="hero-grid">
         <!-- 左：文字 + 首屏战绩 -->
         <div class="hero-left">
@@ -139,6 +140,21 @@
         <span>增长运营 GROWTH</span><span class="star">✦</span>
       </div>
     </div>
+
+    <!-- ===== 3D 沉浸式区块 ===== -->
+    <section class="section-viz" id="viz">
+      <div class="viz-stage" id="viz-stage">
+        <canvas class="viz-canvas" id="viz-object" aria-hidden="true"></canvas>
+        <div class="viz-copy">
+          <p class="viz-kicker reveal">3D / IMMERSIVE · THREE DIMENSION · 三维视觉</p>
+          <h2 class="viz-title reveal">更生动的<br>网页体验</h2>
+          <p class="viz-en reveal">A MORE VIVID WEB — IMMERSIVE EXPERIENCE · INTERACTIVE</p>
+          <p class="viz-hint reveal">拖拽旋转 · 移动鼠标视差<span class="viz-hint-line" aria-hidden="true"></span></p>
+        </div>
+        <p class="viz-corner viz-corner-tl" aria-hidden="true">IMMERSIVE</p>
+        <p class="viz-corner viz-corner-br" aria-hidden="true">EXPERIENCE</p>
+      </div>
+    </section>
 
     <!-- ===== 01 经历 ===== -->
     <section class="section" id="experience">
@@ -554,5 +570,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="js/three-scene.js" defer></script>
 </body>
 </html>

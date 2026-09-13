@@ -804,67 +804,144 @@ a { color: inherit; }
   color: var(--ink);
 }
 
-/* ---- 可视化组件：对比条 / 流程链 / 模块（三段经历统一结构） ---- */
-.exp-viz {
+/* ---- 方法画布：洞察 / 策略 / 落地 / 验证（四格可视化） ---- */
+.canvas {
   display: grid;
-  grid-template-columns: minmax(250px, 310px) 1fr;
-  gap: 12px 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
   margin: 24px 0 4px;
-  padding: 22px 0 18px;
-  border-top: 1px solid var(--line);
 }
 
-.viz-label {
-  margin: 0 0 10px;
+.cv-cell {
+  padding: 18px 20px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fcfcfa;
+  min-width: 0;
+}
+.cv-cell > :last-child { margin-bottom: 0; }
+
+.cv-tag {
+  margin: 0 0 14px;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   color: var(--accent-deep);
 }
-.viz-label-gap { margin-top: 18px; }
 
-/* 对比条 */
-.compare-row {
+.cv-note {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  font-size: 12px;
+  color: var(--ink-3);
+  line-height: 1.65;
+}
+
+/* 迷你对比条 */
+.mini-row {
   display: grid;
-  grid-template-columns: 48px 1fr 52px;
+  grid-template-columns: 96px 1fr 40px;
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
 }
-.compare-name { font-size: 12px; color: var(--ink-3); font-weight: 600; }
-.compare-bar {
-  height: 14px;
+.mini-row:last-of-type { margin-bottom: 0; }
+.mini-name { font-size: 12px; color: var(--ink-2); font-weight: 600; white-space: nowrap; }
+.mini-bar {
+  height: 10px;
   background: #edece7;
   border-radius: 999px;
   overflow: hidden;
 }
-.compare-bar .fill {
+.mini-fill {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: #c9c7bf;
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
 }
-.compare-row.is-after .fill { background: var(--accent); }
-.compare-val {
-  font-size: 14px;
+.mini-fill.dim { background: #b7bcc9; }
+.reveal.in .mini-fill { transform: scaleX(var(--w, 1)); }
+.mini-val {
+  font-size: 13px;
   font-weight: 800;
-  font-variant-numeric: tabular-nums;
   text-align: right;
-  color: var(--ink-2);
-}
-.compare-row.is-after .compare-val { color: var(--accent); }
-.compare-note {
-  margin: 4px 0 0;
-  font-size: 12px;
-  line-height: 1.7;
-  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
 }
 
-/* reveal 进入后触发对比条生长 */
-.reveal.in .fill { transform: scaleX(var(--w, 1)); }
+/* 分层递进块 */
+.seg-chain { display: flex; align-items: stretch; gap: 6px; }
+.seg {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 6px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+.seg-name { margin: 0; font-size: 12.5px; font-weight: 700; }
+.seg-sub { margin: 2px 0 0; font-size: 11px; color: var(--ink-3); }
+.seg.hot { background: var(--accent); border-color: var(--accent); }
+.seg.hot .seg-name { color: #fff; }
+.seg.hot .seg-sub { color: rgba(255, 255, 255, 0.8); }
+.seg-arrow { align-self: center; color: var(--ink-3); font-size: 12px; flex: none; }
+
+/* 指标 → 输出链 / 词条 */
+.io-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.io-chip {
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.io-chip.hot { background: var(--accent-soft); border-color: rgba(31, 94, 255, 0.4); color: var(--accent-deep); }
+.io-arrow { color: var(--ink-3); font-size: 13px; }
+.io-out {
+  padding: 7px 14px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
+.chip-row .io-chip { font-size: 12px; padding: 5px 12px; }
+
+/* 数字块 */
+.num-blocks { display: flex; flex-wrap: wrap; gap: 9px; }
+.num-b {
+  flex: 1 1 88px;
+  min-width: 0;
+  text-align: center;
+  padding: 10px 6px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+.num-b b {
+  display: block;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+.num-b span { display: block; margin-top: 1px; font-size: 11px; color: var(--ink-3); }
+
+/* 画布内 Skill 模块：两列紧凑 */
+.module-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.module-grid-2 .mod { padding: 10px 12px; }
+.module-grid-2 .mod-name { font-size: 13px; }
+.module-grid-2 .mod-sub { font-size: 11px; }
 
 /* 流程链 */
 .flow-chain {
@@ -959,6 +1036,7 @@ a { color: inherit; }
 
 .ab-toggle {
   display: inline-flex;
+  flex-wrap: wrap;
   padding: 4px;
   gap: 4px;
   background: #edece7;
@@ -1180,38 +1258,7 @@ a { color: inherit; }
   .pipe-node:hover { transform: none; }
 }
 
-/* ---- 细节列表（次级层级） ---- */
-.exp-points {
-  margin: 22px 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-}
-
-.exp-points li {
-  position: relative;
-  padding-left: 22px;
-  font-size: 14.5px;
-  color: var(--ink-2);
-  overflow-wrap: break-word;
-  min-width: 0;
-}
-.exp-points li::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 0.72em;
-  width: 7px;
-  height: 7px;
-  border-radius: 2px;
-  background: var(--accent);
-  opacity: 0.45;
-  transform: translateY(-50%) rotate(45deg);
-}
-.exp-points strong { color: var(--ink); font-weight: 700; }
-
+/* ---- 细节成果句 ---- */
 .exp-result-text {
   margin: 24px 0 0;
   font-size: 13.5px;
@@ -1431,8 +1478,10 @@ a.contact-item:hover {
   .exp-body { padding: 24px 20px; }
   .exp-impact { grid-template-columns: 1fr 1fr; gap: 20px 18px; padding: 20px 2px; }
   .impact-num { font-size: 30px; }
-  .exp-viz { grid-template-columns: 1fr; gap: 4px; }
-  .module-grid, .module-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .canvas { grid-template-columns: 1fr; }
+  .module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .seg-chain { flex-wrap: wrap; }
+  .seg-arrow { display: none; }
   .pipeline { flex-wrap: wrap; }
   .pipeline .pipe-node { flex: 1 1 40%; }
   .pipeline .pipe-link { display: none; }

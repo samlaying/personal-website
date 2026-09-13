@@ -180,33 +180,54 @@
             </div>
           </div>
 
-          <div class="exp-viz">
-            <div class="compare">
-              <p class="viz-label">A/B 反转验证 · 提问 UV 率</p>
-              <div class="compare-row">
-                <span class="compare-name">实验前</span>
-                <span class="compare-bar"><span class="fill" style="--w:.11"></span></span>
-                <span class="compare-val">11%</span>
+          <div class="canvas">
+            <div class="cv-cell">
+              <p class="cv-tag">洞察 · INSIGHT</p>
+              <div class="mini-row">
+                <span class="mini-name">点击入口作者</span>
+                <span class="mini-bar"><span class="mini-fill" style="--w:.25"></span></span>
+                <span class="mini-val">25%</span>
               </div>
-              <div class="compare-row is-after">
-                <span class="compare-name">实验后</span>
-                <span class="compare-bar"><span class="fill" style="--w:.39"></span></span>
-                <span class="compare-val">39%</span>
+              <div class="mini-row">
+                <span class="mini-name">未点击作者</span>
+                <span class="mini-bar"><span class="mini-fill dim" style="--w:.11"></span></span>
+                <span class="mini-val">11%</span>
               </div>
-              <p class="compare-note">1.2 亿 UV · 5% 对照组 · 3 个月反转验证；主动诊断＋个性化提问贡献约 20PP</p>
+              <p class="cv-note">SQL 分群对比 — 核心问题是看完数据缺少下一步动作</p>
             </div>
-            <div class="viz-right">
-              <p class="viz-label">转化链路 · 关键漏斗</p>
-              <ol class="flow-chain" aria-label="用户转化链路">
-                <li class="flow-step">查看数据</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step">点击入口</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step hot">提问</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step">发布作品</li>
-              </ol>
-              <p class="viz-label viz-label-gap">方案对比 · 点击切换实验组</p>
+            <div class="cv-cell">
+              <p class="cv-tag">策略 · STRATEGY</p>
+              <div class="seg-chain">
+                <div class="seg">
+                  <p class="seg-name">新用户</p>
+                  <p class="seg-sub">入口文案</p>
+                </div>
+                <span class="seg-arrow" aria-hidden="true">→</span>
+                <div class="seg hot">
+                  <p class="seg-name">查看未提问</p>
+                  <p class="seg-sub">触达时机＋个性化</p>
+                </div>
+                <span class="seg-arrow" aria-hidden="true">→</span>
+                <div class="seg">
+                  <p class="seg-name">提问未发布</p>
+                  <p class="seg-sub">建议可执行性</p>
+                </div>
+              </div>
+              <p class="cv-note">按行为分层运营，各设提问 / 采纳 / 发布阶段指标</p>
+            </div>
+            <div class="cv-cell">
+              <p class="cv-tag">落地 · EXECUTION</p>
+              <div class="io-chain">
+                <span class="io-chip">CTR</span>
+                <span class="io-chip">完播率</span>
+                <span class="io-chip">互动率</span>
+                <span class="io-arrow" aria-hidden="true">→</span>
+                <span class="io-out">AI 按最弱指标生成可执行建议</span>
+              </div>
+              <p class="cv-note">推动产品 / 算法 / 模型三团队接入作品数据</p>
+            </div>
+            <div class="cv-cell">
+              <p class="cv-tag">验证 · VALIDATION</p>
               <div class="ab-demo">
                 <div class="ab-toggle" role="group" aria-label="切换 A/B 实验方案">
                   <button type="button" class="ab-btn is-active" data-ab="control">A · 固定模板</button>
@@ -215,32 +236,18 @@
                 <div class="ab-panel" aria-live="polite">
                   <blockquote class="ab-quote" data-ab-panel="control">
                     <p>「关于作品数据的问题，都可以问我。」</p>
-                    <footer>通用入口文案 — 用户看完数据，仍不知道问什么</footer>
+                    <footer>用户看完数据，仍不知道问什么</footer>
                   </blockquote>
                   <blockquote class="ab-quote" data-ab-panel="treatment" hidden>
                     <p>「你的完播率低于同层作者，建议从前 3 秒开头钩子入手；互动率偏弱，可在结尾追加提问引导。」</p>
-                    <footer>基于用户最弱指标主动生成 — 建议可直接执行（示意）</footer>
+                    <footer>基于最弱指标主动生成 · 建议可直接执行（示意）</footer>
                   </blockquote>
                 </div>
                 <p class="ab-stat">该方案提问 UV 率 <strong class="ab-value" data-ab-value>11%</strong></p>
               </div>
+              <p class="cv-note">1.2 亿 UV · 5% 对照组 · 3 个月反转验证 · 贡献 20PP</p>
             </div>
           </div>
-
-          <ul class="exp-points">
-            <li>
-              <strong>数据洞察：</strong>用 SQL 对比“点击过作品表现面板底部 AI 创作助手入口”的作者与未点击作者，发现 AI 使用率分别为 25% 与 11%；进一步拆解“查看数据→点击入口→提问→发布作品”漏斗，定位主要问题不是功能没有价值，而是用户看完数据后缺少明确的下一步动作。
-            </li>
-            <li>
-              <strong>需求与分层：</strong>通过创作者访谈和行为观察，归纳出“不知道问什么、建议与自身数据无关、建议难执行”三类需求；按新用户、已查看数据但未提问、已提问未发布等行为分层，分别设计入口文案、触达时机和个性化提问内容，并为不同人群设定提问、采纳和发布等阶段性指标。
-            </li>
-            <li>
-              <strong>内容运营与落地：</strong>围绕 CTR、完播率、互动率等高频指标整理问题—原因—动作内容模板，输出用户侧引导话术、运营方案和交互原型；推动产品、算法和模型团队接入作品数据，使 AI 根据用户最弱指标主动生成可执行的创作建议，并跟进上线后的内容质量与用户反馈。
-            </li>
-            <li>
-              <strong>实验与复盘：</strong>对入口位置、主动诊断 vs 固定模板、个性化 vs 通用提问分别开展 A/B 实验，比较提问率、建议采纳率和后续发布行为；根据实验结果调整入口文案、触达时机和推荐内容，最优方案推全后用 1.2 亿 UV、5% 对照组做 3 个月反转验证，提问 UV 率由 11% 提升至 39%，主动诊断与个性化提问贡献约 20PP。
-            </li>
-          </ul>
           <p class="exp-result-text"><span class="exp-result-label">项目成果</span>提问 UV 率 11%→39%，主动诊断＋个性化提问贡献 20PP；诊断用户完播率 +12%、互动率 +9%。</p>
         </div>
       </article>
@@ -273,23 +280,23 @@
             </div>
           </div>
 
-          <div class="exp-viz">
-            <div class="compare">
-              <p class="viz-label">推荐准确率提升</p>
-              <div class="compare-row">
-                <span class="compare-name">改版前</span>
-                <span class="compare-bar"><span class="fill" style="--w:.60"></span></span>
-                <span class="compare-val">60%</span>
+          <div class="canvas">
+            <div class="cv-cell">
+              <p class="cv-tag">洞察 · INSIGHT</p>
+              <div class="num-blocks">
+                <div class="num-b"><b>30+</b><span>招聘方访谈</span></div>
+                <div class="num-b"><b>4</b><span>字段编码维度</span></div>
               </div>
-              <div class="compare-row is-after">
-                <span class="compare-name">改版后</span>
-                <span class="compare-bar"><span class="fill" style="--w:.85"></span></span>
-                <span class="compare-val">85%+</span>
+              <div class="chip-row">
+                <span class="io-chip">岗位</span>
+                <span class="io-chip">能力</span>
+                <span class="io-chip">行业</span>
+                <span class="io-chip">年限</span>
               </div>
-              <p class="compare-note">22 名真实 HR · 4 周试用 · 60+ 反馈 · 4 轮迭代；意图澄清 Skill 独立贡献约 15PP</p>
+              <p class="cv-note">「找个懂增长的人」缺关键约束 — 核心是输入信息不足，而非算法</p>
             </div>
-            <div class="viz-right">
-              <p class="viz-label">产品流程 · 链路设计</p>
+            <div class="cv-cell">
+              <p class="cv-tag">策略 · STRATEGY</p>
               <ol class="flow-chain" aria-label="产品流程">
                 <li class="flow-step">需求输入</li>
                 <li class="flow-sep" aria-hidden="true">→</li>
@@ -301,34 +308,52 @@
                 <li class="flow-sep" aria-hidden="true">→</li>
                 <li class="flow-step">触达</li>
               </ol>
-              <p class="viz-label viz-label-gap">Agent 意图澄清 · 交互演示</p>
-              <div class="chat-demo">
-                <div class="chat-window" aria-live="polite">
-                  <p class="chat-note">示意 · 猎头澄清经验 Skill 化，由 Agent 主动追问</p>
-                  <div class="msg msg-user">找个懂增长的人</div>
-                  <div class="msg msg-agent">收到，先确认几个关键约束：<br>① 偏投放、内容还是商业化增长？<br>② 期望年限区间？<br>③ 行业背景有要求吗？</div>
-                  <div class="msg msg-user">内容增长，3 年左右，最好有短视频行业经验</div>
-                  <div class="msg msg-agent msg-final">约束已补全<span class="chat-tag">内容增长</span><span class="chat-tag">3 年+</span><span class="chat-tag">短视频</span><span class="chat-done">→ 生成精准搜索</span></div>
+              <p class="cv-note">猎头澄清经验 Skill 化，由 Agent 主动追问补全约束</p>
+            </div>
+            <div class="cv-cell">
+              <p class="cv-tag">落地 · EXECUTION</p>
+              <div class="module-grid module-grid-2">
+                <div class="mod hot">
+                  <p class="mod-name">意图澄清</p>
+                  <p class="mod-sub">+15PP · 主动追问</p>
                 </div>
-                <button type="button" class="chat-replay">↻ 重新演示</button>
+                <div class="mod">
+                  <p class="mod-name">人才搜索</p>
+                  <p class="mod-sub">约束补全检索</p>
+                </div>
+                <div class="mod">
+                  <p class="mod-name">触达</p>
+                  <p class="mod-sub">候选人沟通</p>
+                </div>
+                <div class="mod">
+                  <p class="mod-name">看板管理</p>
+                  <p class="mod-sub">流程跟踪</p>
+                </div>
               </div>
+              <p class="cv-note">Agent Demo · Few-shot＋RAG 知识库注入专业信息</p>
+            </div>
+            <div class="cv-cell">
+              <p class="cv-tag">验证 · VALIDATION</p>
+              <div class="num-blocks">
+                <div class="num-b"><b>200+</b><span>澄清评测 Case</span></div>
+                <div class="num-b"><b>100+</b><span>搜索评测 Case</span></div>
+                <div class="num-b"><b>22</b><span>真实 HR 试用</span></div>
+                <div class="num-b"><b>4</b><span>轮迭代</span></div>
+              </div>
+              <p class="cv-note">模糊 / 矛盾 / 跨领域输入全覆盖 · Prompt 改动跑回归</p>
             </div>
           </div>
 
-          <ul class="exp-points">
-            <li>
-              <strong>需求挖掘：</strong>访谈 30+ 招聘方并整理真实搜索 Case，按岗位、能力、行业、年限等字段编码，发现“找个懂增长的人”这类需求普遍缺少关键约束；结合搜索失败样本判断，核心问题是输入信息不足，而非单纯的推荐算法问题。
-            </li>
-            <li>
-              <strong>方案与执行：</strong>绘制“需求输入—意图澄清—人才搜索—结果反馈—触达”的流程原型，设计澄清问题、结果解释和反馈文案；搭建招聘场景 Agent Demo，将猎头 Know-How 拆为意图澄清、人才搜索、触达、看板管理四组 Skill，并用 Few-shot 和 RAG 知识库注入专业信息。
-            </li>
-            <li>
-              <strong>评测与迭代：</strong>制作意图澄清 200+ case、搜索 100+ case 的标准评测集，覆盖模糊、矛盾、跨领域输入；用“澄清完成率—有效搜索率—结果采纳率—后续触达”漏斗定位问题，Prompt 改动统一跑回归测试。
-            </li>
-            <li>
-              <strong>用户验证：</strong>4 周内让 22 名真实 HR 试用，收集 60+ 反馈并完成 4 轮迭代；按反馈频次和业务影响排序问题，重点优化澄清轮次、结果解释和操作路径，并沉淀为可复用的试用运营流程，从 Demo 推进至可运营产品。
-            </li>
-          </ul>
+          <div class="chat-demo">
+            <div class="chat-window" aria-live="polite">
+              <p class="chat-note">Agent 意图澄清 · 交互演示（示意）</p>
+              <div class="msg msg-user">找个懂增长的人</div>
+              <div class="msg msg-agent">收到，先确认几个关键约束：<br>① 偏投放、内容还是商业化增长？<br>② 期望年限区间？<br>③ 行业背景有要求吗？</div>
+              <div class="msg msg-user">内容增长，3 年左右，最好有短视频行业经验</div>
+              <div class="msg msg-agent msg-final">约束已补全<span class="chat-tag">内容增长</span><span class="chat-tag">3 年+</span><span class="chat-tag">短视频</span><span class="chat-done">→ 生成精准搜索</span></div>
+            </div>
+            <button type="button" class="chat-replay">↻ 重新演示</button>
+          </div>
           <p class="exp-result-text"><span class="exp-result-label">项目成果</span>推荐准确率 60% → 85%+，意图澄清 Skill 独立贡献约 15PP；需求首次满足率 35%→68%。</p>
         </div>
       </article>
@@ -361,23 +386,19 @@
             </div>
           </div>
 
-          <div class="exp-viz">
-            <div class="compare">
-              <p class="viz-label">核心场景评分提升</p>
-              <div class="compare-row">
-                <span class="compare-name">迭代前</span>
-                <span class="compare-bar"><span class="fill" style="--w:.62"></span></span>
-                <span class="compare-val">62</span>
+          <div class="canvas">
+            <div class="cv-cell">
+              <p class="cv-tag">洞察 · INSIGHT</p>
+              <div class="chip-row">
+                <span class="io-chip">需求理解</span>
+                <span class="io-chip hot">执行计划</span>
+                <span class="io-chip">代码生成</span>
+                <span class="io-chip">页面渲染</span>
               </div>
-              <div class="compare-row is-after">
-                <span class="compare-name">迭代后</span>
-                <span class="compare-bar"><span class="fill" style="--w:.82"></span></span>
-                <span class="compare-val">82</span>
-              </div>
-              <p class="compare-note">质量 · 效果 · 成本三维评测驱动迭代；Token 成本降低 45%，30 天活跃应用占 58%</p>
+              <p class="cv-note">失败 Case 四类归因 — 首次创建成功的关键在需求澄清</p>
             </div>
-            <div class="viz-right">
-              <p class="viz-label">产品流程 · 先确认再创建</p>
+            <div class="cv-cell">
+              <p class="cv-tag">策略 · STRATEGY</p>
               <ol class="flow-chain" aria-label="产品流程">
                 <li class="flow-step">自然语言输入</li>
                 <li class="flow-sep" aria-hidden="true">→</li>
@@ -391,7 +412,10 @@
                 <li class="flow-sep" aria-hidden="true">→</li>
                 <li class="flow-step">发布</li>
               </ol>
-              <p class="viz-label viz-label-gap">生成流程 · Skill 流水线</p>
+              <p class="cv-note">先确认 AI 执行计划再创建 · 配套模板 / 管理 / 回退 / 广场</p>
+            </div>
+            <div class="cv-cell">
+              <p class="cv-tag">落地 · EXECUTION</p>
               <div class="pipeline">
                 <div class="pipe-node">
                   <span class="pipe-dot" aria-hidden="true"></span>
@@ -418,22 +442,22 @@
                 </div>
               </div>
             </div>
+            <div class="cv-cell">
+              <p class="cv-tag">验证 · VALIDATION</p>
+              <div class="num-blocks">
+                <div class="num-b"><b>3</b><span>维评测体系</span></div>
+                <div class="num-b"><b>62→82</b><span>核心场景评分</span></div>
+                <div class="num-b"><b>200+</b><span>企业试点场景</span></div>
+              </div>
+              <div class="chip-row">
+                <span class="io-chip">质量</span>
+                <span class="io-chip">效果</span>
+                <span class="io-chip">成本</span>
+                <span class="io-chip">Token −45%</span>
+              </div>
+              <p class="cv-note">按失败频次与影响定优先级，持续迭代模板与生成策略</p>
+            </div>
           </div>
-
-          <ul class="exp-points">
-            <li>
-              <strong>需求分析：</strong>访谈非技术用户并复盘企业试点的创建失败 Case，按需求理解、执行计划、代码生成、页面渲染四类问题归因；发现用户并非没有业务想法，而是不知道如何把想法拆成可执行需求，首次创建成功的关键在需求澄清。
-            </li>
-            <li>
-              <strong>原型与方案：</strong>绘制“自然语言输入—生成执行计划与 PRD—用户确认—实时创建—预览迭代—发布”原型，编写需求文档并设计用户确认环节，让用户先校准计划再生成应用；配套场景模板、应用管理、版本回退和应用广场等功能。
-            </li>
-            <li>
-              <strong>能力搭建：</strong>将生成流程拆为需求理解、执行计划生成、代码生成、UI 渲染四组 Skill；为需求理解 Skill 增加场景推荐与 Todo 拆解，编写 Prompt 和评测 Case，降低用户描述需求的门槛。
-            </li>
-            <li>
-              <strong>数据验证：</strong>搭建质量、效果、成本三维评测表，按创建成功率、功能完整性、质量评分和 Token 成本定位瓶颈；结合失败 Case 的频次与影响确定迭代优先级，持续迭代场景模板与生成策略，推动企业试点覆盖 200+ 业务场景。
-            </li>
-          </ul>
           <p class="exp-result-text"><span class="exp-result-label">项目成果</span>企业试点覆盖 200+ 场景，核心场景评分 62→82 分；Token 降 45%，30 天活跃应用占 58%。</p>
         </div>
       </article>

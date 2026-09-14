@@ -341,6 +341,50 @@ a { color: inherit; }
   padding: 16px 0 4px;
 }
 
+.character-stage {
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: .88;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+.character-model {
+  position: relative;
+  width: min(300px, 64vw);
+  height: min(390px, 62vw);
+  border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+  overflow: hidden;
+  border: 5px solid #fff;
+  box-shadow: 0 0 0 1px var(--line), 0 30px 70px -24px rgba(14, 30, 80, .35);
+  background: transparent;
+  --poster-color: transparent;
+}
+.character-stage::before {
+  content: "";
+  position: absolute;
+  inset: 9% 8% 4%;
+  z-index: -1;
+  border: 1px solid rgba(31, 94, 255, .16);
+  border-radius: 48% 48% 38% 38% / 38% 38% 54% 54%;
+  background: linear-gradient(150deg, rgba(255,255,255,.72), rgba(232,239,255,.4));
+  box-shadow: 0 30px 70px -28px rgba(31, 94, 255, .38);
+  transform: rotate(-5deg);
+}
+.character-kicker, .character-caption {
+  position: absolute;
+  z-index: 2;
+  color: var(--accent-deep);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  line-height: 1.45;
+}
+.character-kicker { top: 7%; left: 2%; }
+.character-caption { right: 0; bottom: 7%; text-align: right; }
+.character-caption small { color: var(--ink-3); font-size: 8px; letter-spacing: .12em; }
+
 .ring {
   position: absolute;
   width: min(420px, 92%);
@@ -1417,7 +1461,7 @@ a.contact-item:hover {
 .hero-left > *:nth-child(5) { animation-delay: 0.45s; }
 .hero-left > *:nth-child(6) { animation-delay: 0.6s; }
 
-.hero-visual .avatar-frame { animation: pop 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s backwards; }
+.hero-visual .character-stage { animation: pop 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s backwards; }
 .hero-aside { animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s backwards; }
 
 @keyframes rise {
@@ -1437,7 +1481,7 @@ a.contact-item:hover {
   .chip, .scroll-hint-line, .marquee-track { animation: none; }
   .compare-bar .fill { transition: none; transform: scaleX(var(--w, 1)); }
   .hero-left > *,
-  .hero-visual .avatar-frame,
+  .hero-visual .character-stage,
   .hero-aside { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn, .dot, .skill-col, .contact-item, .aside-list a,

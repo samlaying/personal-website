@@ -353,6 +353,11 @@
               <div class="msg msg-agent msg-final">约束已补全<span class="chat-tag">内容增长</span><span class="chat-tag">3 年+</span><span class="chat-tag">短视频</span><span class="chat-done">→ 生成精准搜索</span></div>
             </div>
             <button type="button" class="chat-replay">↻ 重新演示</button>
+            <div class="chat-states" role="group" aria-label="查看澄清过程">
+              <button type="button" class="chat-state is-active" data-chat-state="vague" aria-pressed="true">模糊需求</button>
+              <button type="button" class="chat-state" data-chat-state="clear" aria-pressed="false">澄清约束</button>
+              <button type="button" class="chat-state" data-chat-state="search" aria-pressed="false">确认搜索</button>
+            </div>
           </div>
           <p class="exp-result-text"><span class="exp-result-label">项目成果</span>推荐准确率 60% → 85%+，意图澄清 Skill 独立贡献约 15PP；需求首次满足率 35%→68%。</p>
         </div>
@@ -416,6 +421,11 @@
             </div>
             <div class="cv-cell">
               <p class="cv-tag">落地 · EXECUTION</p>
+              <div class="baidu-steps" role="tablist" aria-label="产品流程步骤">
+                <button type="button" class="baidu-step is-active" data-step="brief" aria-selected="true">01 描述需求</button>
+                <button type="button" class="baidu-step" data-step="plan" aria-selected="false">02 执行计划</button>
+                <button type="button" class="baidu-step" data-step="preview" aria-selected="false">03 应用预览</button>
+              </div>
               <div class="pipeline">
                 <div class="pipe-node">
                   <span class="pipe-dot" aria-hidden="true"></span>

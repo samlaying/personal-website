@@ -45,22 +45,10 @@
     revealEls.forEach((el) => io.observe(el));
   }
 
-  /* ---- 首屏战绩数字 count-up ---- */
-  if (!prefersReduced.matches && hasIO) {
-    const countIO = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            tween(el, Number(el.dataset.count) || 0, { suffix: el.dataset.suffix || "" });
-            countIO.unobserve(el);
-          }
-        }
-      },
-      { threshold: 0.6 }
-    );
-    document.querySelectorAll(".count[data-count]").forEach((el) => countIO.observe(el));
-  }
+  /* ---- 首屏战绩保持真实值，避免数字抽奖式滚动 ---- */
+  document.querySelectorAll(".count[data-count]").forEach((el) => {
+    el.textContent = `${el.dataset.count}${el.dataset.suffix || ""}`;
+  });
 
   /* ---- 顶部滚动进度条 ---- */
   const progressBar = document.querySelector(".progress-bar");
@@ -149,6 +137,41 @@
 
     if (replayBtn) replayBtn.addEventListener("click", play);
   }
+
+  /* ---- 猎聘三态：模糊需求 → 澄清约束 → 确认搜索 ---- */
+  const chatStates = document.querySelectorAll("[data-chat-state]");
+  const chatStateCopy = {
+    vague: "找个懂增长的人",
+    clear: "内容增长，3 年左右，最好有短视频行业经验",
+    search: "约束已补全 → 生成精准搜索"
+  };
+  chatStates.forEach((button) => button.addEventListener("click", () => {
+    const state = button.dataset.chatState;
+    chatStates.forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    const final = chatWindow?.querySelector(".msg-final");
+    if (final && state === "search") final.firstChild.textContent = chatStateCopy.search;
+    else if (chatWindow && state !== "search") {
+      const user = chatWindow.querySelector(".msg-user");
+      if (user) user.textContent = chatStateCopy[state];
+    }
+  }));
+
+  /* ---- 百度步骤与预览联动 ---- */
+  const baiduSteps = document.querySelectorAll("[data-step]");
+  const pipeline = document.querySelector("#exp-baidu .pipeline");
+  baiduSteps.forEach((button) => button.addEventListener("click", () => {
+    const state = button.dataset.step;
+    baiduSteps.forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-selected", String(active));
+    });
+    if (pipeline) pipeline.dataset.step = state;
+  }));
 
   /* ---- Skill 流水线依次点亮（百度） ---- */
   const pipelines = document.querySelectorAll(".pipeline");

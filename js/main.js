@@ -16,9 +16,22 @@
     });
   }
   reduced.addEventListener("change", () => {
-    if (reduced.matches)
+    if (reduced.matches) {
+      autoStops.forEach((stop) => stop());
       document.getAnimations().forEach((animation) => animation.cancel());
+    }
   });
+  const autoStops = [];
+  function rise(element) {
+    if (!element || reduced.matches || !element.animate) return;
+    element.animate(
+      [
+        { opacity: 0, transform: "translateY(10px)" },
+        { opacity: 1, transform: "translateY(0)" },
+      ],
+      { duration: 360, easing: "cubic-bezier(.23,1,.32,1)" },
+    );
+  }
   function selectButtons(selector, key, value) {
     document
       .querySelectorAll(selector)
@@ -98,7 +111,11 @@
   function renderLp() {
     selectButtons("[data-lp-step]", "lpStep", lpStep);
     document.querySelectorAll("[data-message]").forEach((m) => {
-      m.hidden = Number(m.dataset.message) > lpStep;
+      const show = Number(m.dataset.message) <= lpStep;
+      if (show && m.hidden) {
+        m.hidden = false;
+        rise(m);
+      } else m.hidden = !show;
     });
     const fields = {
       content: "内容增长",
@@ -158,11 +175,13 @@
       "计划预览",
       "应用预览",
     ][bdStep];
-    document
-      .querySelectorAll("[data-preview]")
-      .forEach(
-        (p) => (p.hidden = bdStep === 0 || !features[p.dataset.preview]),
-      );
+    document.querySelectorAll("[data-preview]").forEach((p) => {
+      const show = bdStep !== 0 && features[p.dataset.preview];
+      if (show && p.hidden) {
+        p.hidden = false;
+        rise(p);
+      } else p.hidden = !show;
+    });
     const chosen = Object.keys(features).filter((k) => features[k]);
     document.getElementById("bd-summary").textContent =
       bdStep === 0
@@ -214,4 +233,226 @@
       .querySelectorAll(".case-head,.outcomes,.methods")
       .forEach((element) => observer.observe(element));
   }
+
+  // ── Autoplay: each workbench plays its decision story once in view.
+  // Any real interaction (pointer or focus) hands control to the user;
+  // the chip becomes a replay button. aria-live stays quiet while playing.
+  function syncFeatures() {
+    document.querySelectorAll("[data-feature]").forEach((input) => {
+      input.checked = features[input.dataset.feature];
+    });
+  }
+  function autoDemo(rootId, steps) {
+    const root = document.getElementById(rootId);
+    if (!root) return;
+    const chip = root.querySelector(".auto");
+    if (!chip || reduced.matches || !root.animate) {
+      if (chip) chip.hidden = true;
+      return;
+    }
+    const bar = chip.querySelector("b");
+    const label = chip.querySelector("span");
+    const live = root.querySelectorAll("[aria-live]");
+    let index = -1,
+      timer = 0,
+      anim = null,
+      playing = false,
+      taken = false,
+      inView = false,
+      remain = 0,
+      stamp = 0;
+    function setLive(polite) {
+      live.forEach((el) => el.setAttribute("aria-live", polite ? "polite" : "off"));
+    }
+    function paint() {
+      const on = playing && !taken;
+      chip.setAttribute("aria-pressed", String(on));
+      chip.setAttribute("aria-label", on ? "停止自动演示" : "重播自动演示");
+      label.textContent = on ? "自动演示" : "重播演示";
+    }
+    function clearBar() {
+      if (anim) {
+        anim.cancel();
+        anim = null;
+      }
+    }
+    function runStep() {
+      const step = steps[index];
+      step.run();
+      clearBar();
+      anim = bar.animate(
+        [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
+        { duration: step.dwell, easing: "linear", fill: "forwards" },
+      );
+      stamp = performance.now();
+      remain = step.dwell;
+      clearTimeout(timer);
+      timer = setTimeout(next, step.dwell);
+      paint();
+    }
+    function next() {
+      if (!playing || taken) return;
+      index = (index + 1) % steps.length;
+      runStep();
+    }
+    function begin() {
+      playing = true;
+      taken = false;
+      setLive(false);
+      index = 0;
+      runStep();
+    }
+    function pause() {
+      if (!playing || taken) return;
+      clearTimeout(timer);
+      remain = Math.max(0, remain - (performance.now() - stamp));
+      if (anim) anim.pause();
+    }
+    function resume() {
+      if (!playing || taken || !inView || document.hidden) return;
+      if (anim) anim.play();
+      stamp = performance.now();
+      clearTimeout(timer);
+      timer = setTimeout(next, remain);
+    }
+    function stop() {
+      playing = false;
+      taken = true;
+      clearTimeout(timer);
+      clearBar();
+      setLive(true);
+      paint();
+    }
+    chip.addEventListener("click", () => {
+      if (playing && !taken) stop();
+      else begin();
+    });
+    root.addEventListener(
+      "pointerdown",
+      (event) => {
+        if (event.target.closest(".auto")) return;
+        if (playing && !taken) stop();
+      },
+      true,
+    );
+    root.addEventListener(
+      "focusin",
+      (event) => {
+        if (event.target.closest(".auto")) return;
+        if (playing && !taken) stop();
+      },
+      true,
+    );
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            inView = entry.isIntersecting;
+            if (inView && !playing && !taken && index < 0) begin();
+            else if (inView) resume();
+            else pause();
+          }),
+        { threshold: 0.25 },
+      );
+      io.observe(root);
+    } else begin();
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) pause();
+      else resume();
+    });
+    autoStops.push(stop);
+  }
+  autoDemo("ks-demo", [
+    { dwell: 2800, run: () => { ksMode = "before"; metric = "retention"; renderKs(); } },
+    { dwell: 3000, run: () => { ksMode = "after"; metric = "retention"; renderKs(); } },
+    { dwell: 3000, run: () => { metric = "engagement"; renderKs(); } },
+    { dwell: 3000, run: () => { metric = "click"; renderKs(); } },
+  ]);
+  autoDemo("lp-demo", [
+    { dwell: 2200, run: () => { lpStep = 0; renderLp(); } },
+    { dwell: 3000, run: () => { lpStep = 1; renderLp(); } },
+    { dwell: 3600, run: () => { lpStep = 2; renderLp(); } },
+  ]);
+  autoDemo("bd-demo", [
+    { dwell: 2400, run: () => { bdStep = 0; renderBd(); } },
+    {
+      dwell: 2600,
+      run: () => {
+        bdStep = 1;
+        features.reminders = true;
+        syncFeatures();
+        renderBd();
+      },
+    },
+    {
+      dwell: 2200,
+      run: () => {
+        features.reminders = false;
+        syncFeatures();
+        renderBd();
+      },
+    },
+    {
+      dwell: 2000,
+      run: () => {
+        features.reminders = true;
+        syncFeatures();
+        renderBd();
+      },
+    },
+    { dwell: 3400, run: () => { bdStep = 2; renderBd(); } },
+  ]);
+
+  // ── Outcome numbers count up once, when their row scrolls into view.
+  function countUp() {
+    if (reduced.matches) return;
+    const blocks = document.querySelectorAll(".outcomes");
+    blocks.forEach((block) => {
+      block.querySelectorAll("strong").forEach((strong) => {
+        [...strong.childNodes].forEach((node) => {
+          if (node.nodeType !== 3) return;
+          const text = node.textContent;
+          const match = text.match(/\d+(?:\.\d+)?/);
+          if (!match) return;
+          const number = document.createElement("b");
+          number.className = "num";
+          number.dataset.value = match[0];
+          number.textContent = match[0];
+          const frag = document.createDocumentFragment();
+          frag.append(
+            document.createTextNode(text.slice(0, match.index)),
+            number,
+            document.createTextNode(text.slice(match.index + match[0].length)),
+          );
+          strong.replaceChild(frag, node);
+        });
+      });
+    });
+    if (!("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          io.unobserve(entry.target);
+          entry.target.querySelectorAll(".num").forEach((num, i) => {
+            const target = parseFloat(num.dataset.value);
+            const decimals = target % 1 ? 1 : 0;
+            const start = performance.now() + i * 90;
+            function frame(now) {
+              const p = Math.min(1, Math.max(0, (now - start) / 1100));
+              const eased = 1 - Math.pow(1 - p, 3);
+              const value = target * eased;
+              num.textContent = decimals
+                ? value.toFixed(1)
+                : String(Math.round(value));
+              if (p < 1) requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+          });
+        }),
+      { threshold: 0.4 },
+    );
+    blocks.forEach((block) => io.observe(block));
+  }
+  countUp();
 })();

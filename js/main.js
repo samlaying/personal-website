@@ -234,9 +234,12 @@
       .forEach((element) => observer.observe(element));
   }
 
-  // ── Autoplay: each workbench plays its decision story once in view.
-  // Any real interaction (pointer or focus) hands control to the user;
-  // the chip becomes a replay button. aria-live stays quiet while playing.
+  // ── Autoplay: purely scroll-driven, zero clicks. Each workbench starts
+  // playing once scrolled into view and pauses off-screen. If the visitor
+  // interacts with the prototype, the demo yields for a moment and then
+  // resumes on its own — nobody ever has to click for the story to play.
+  // aria-live stays quiet while the demo drives, polite while the user does.
+  const HOLD_MS = 6000;
   function syncFeatures() {
     document.querySelectorAll("[data-feature]").forEach((input) => {
       input.checked = features[input.dataset.feature];
@@ -244,123 +247,62 @@
   }
   function autoDemo(rootId, steps) {
     const root = document.getElementById(rootId);
-    if (!root) return;
-    const chip = root.querySelector(".auto");
-    if (!chip || reduced.matches || !root.animate) {
-      if (chip) chip.hidden = true;
-      return;
-    }
-    const bar = chip.querySelector("b");
-    const label = chip.querySelector("span");
+    if (!root || reduced.matches || !root.animate) return;
     const live = root.querySelectorAll("[aria-live]");
     let index = -1,
       timer = 0,
-      anim = null,
-      playing = false,
-      taken = false,
-      inView = false,
-      remain = 0,
-      stamp = 0;
+      playing = true,
+      holding = false,
+      holdUntil = 0,
+      inView = false;
     function setLive(polite) {
-      live.forEach((el) => el.setAttribute("aria-live", polite ? "polite" : "off"));
+      live.forEach((el) =>
+        el.setAttribute("aria-live", polite ? "polite" : "off"),
+      );
     }
-    function paint() {
-      const on = playing && !taken;
-      chip.setAttribute("aria-pressed", String(on));
-      chip.setAttribute("aria-label", on ? "停止自动演示" : "重播自动演示");
-      label.textContent = on ? "自动演示" : "重播演示";
+    function loop(delay) {
+      clearTimeout(timer);
+      timer = setTimeout(fire, delay);
     }
-    function clearBar() {
-      if (anim) {
-        anim.cancel();
-        anim = null;
+    function fire() {
+      if (!playing) return;
+      if (holding && performance.now() >= holdUntil) {
+        holding = false;
+        setLive(false);
       }
-    }
-    function runStep() {
+      if (holding || !inView || document.hidden) {
+        loop(300);
+        return;
+      }
+      index = (index + 1) % steps.length;
       const step = steps[index];
       step.run();
-      clearBar();
-      anim = bar.animate(
-        [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
-        { duration: step.dwell, easing: "linear", fill: "forwards" },
-      );
-      stamp = performance.now();
-      remain = step.dwell;
-      clearTimeout(timer);
-      timer = setTimeout(next, step.dwell);
-      paint();
+      loop(step.dwell);
     }
-    function next() {
-      if (!playing || taken) return;
-      index = (index + 1) % steps.length;
-      runStep();
-    }
-    function begin() {
-      playing = true;
-      taken = false;
-      setLive(false);
-      index = 0;
-      runStep();
-    }
-    function pause() {
-      if (!playing || taken) return;
-      clearTimeout(timer);
-      remain = Math.max(0, remain - (performance.now() - stamp));
-      if (anim) anim.pause();
-    }
-    function resume() {
-      if (!playing || taken || !inView || document.hidden) return;
-      if (anim) anim.play();
-      stamp = performance.now();
-      clearTimeout(timer);
-      timer = setTimeout(next, remain);
-    }
-    function stop() {
-      playing = false;
-      taken = true;
-      clearTimeout(timer);
-      clearBar();
+    function hold() {
+      holding = true;
+      holdUntil = performance.now() + HOLD_MS;
       setLive(true);
-      paint();
     }
-    chip.addEventListener("click", () => {
-      if (playing && !taken) stop();
-      else begin();
-    });
-    root.addEventListener(
-      "pointerdown",
-      (event) => {
-        if (event.target.closest(".auto")) return;
-        if (playing && !taken) stop();
-      },
-      true,
-    );
-    root.addEventListener(
-      "focusin",
-      (event) => {
-        if (event.target.closest(".auto")) return;
-        if (playing && !taken) stop();
-      },
-      true,
+    ["pointerdown", "focusin", "click", "change"].forEach((type) =>
+      root.addEventListener(type, hold, true),
     );
     if ("IntersectionObserver" in window) {
       const io = new IntersectionObserver(
         (entries) =>
-          entries.forEach((entry) => {
-            inView = entry.isIntersecting;
-            if (inView && !playing && !taken && index < 0) begin();
-            else if (inView) resume();
-            else pause();
-          }),
+          entries.forEach((entry) => (inView = entry.isIntersecting)),
         { threshold: 0.25 },
       );
       io.observe(root);
-    } else begin();
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) pause();
-      else resume();
+    } else inView = true;
+    setLive(false);
+    loop(300);
+    autoStops.push(() => {
+      playing = false;
+      holding = true;
+      clearTimeout(timer);
+      setLive(true);
     });
-    autoStops.push(stop);
   }
   autoDemo("ks-demo", [
     { dwell: 2800, run: () => { ksMode = "before"; metric = "retention"; renderKs(); } },

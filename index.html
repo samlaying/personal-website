@@ -1,595 +1,662 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="林承列 · AI 产品经理。具备 AI 产品 0→1 冷启动、1→N 用户增长及质量评测经验，擅长通过用户洞察、数据实验和反馈闭环推动产品迭代与增长。">
-  <meta name="theme-color" content="#f5f3ec">
-  <title>林承列 · AI 产品经理｜个人主页</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23e30613'/%3E%3Ctext x='32' y='43' font-family='PingFang SC, sans-serif' font-size='30' font-weight='700' fill='%23ffffff' text-anchor='middle'%3E林%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div class="bg" aria-hidden="true"></div>
-
-  <div class="progress" aria-hidden="true"><span class="progress-bar"></span></div>
-
-  <a class="skip-link" href="#main">跳到主要内容</a>
-
-  <!-- ===== 导航 ===== -->
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="logo" href="#top" aria-label="回到顶部">LIN&nbsp;CHENGLIE<span class="logo-dot" aria-hidden="true"></span></a>
-      <nav class="nav-menu" aria-label="页面导航">
-        <a class="nav-link" href="#experience">经历</a>
-        <a class="nav-link" href="#skills">能力</a>
-        <a class="nav-link" href="#education">教育</a>
-        <a class="nav-link" href="#contact">联系</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="林承列的 AI 产品决策作品集：创作者增长、招聘需求澄清、AI 应用生成质量。"
+    />
+    <meta name="theme-color" content="#f7f6f2" />
+    <title>林承列 · AI 产品经理｜产品决策作品集</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">跳到正文</a>
+    <header class="nav">
+      <a class="logo" href="#top">LIN CHENGLIE<span></span></a>
+      <nav aria-label="主导航">
+        <a href="#experience">案例</a><a href="#skills">方法</a
+        ><a href="#contact">联系 ↗</a>
       </nav>
-      <a class="btn btn-accent btn-sm" href="#contact">联系我</a>
-    </div>
-  </header>
-
-  <main id="main">
-    <!-- ===== Hero ===== -->
-    <section class="hero" id="top">
-      <canvas class="hero-aurora" id="hero-aurora" aria-hidden="true"></canvas>
-      <div class="hero-grid">
-        <!-- 左：文字 + 首屏战绩 -->
-        <div class="hero-left">
-          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>AI&nbsp;PRODUCT&nbsp;MANAGER</p>
-          <h1 class="hero-name">林承列</h1>
-          <p class="hero-role">AI 产品 <em>0→1 冷启动</em> × <em>1→N 增长</em> × <em>质量评测</em></p>
-          <p class="hero-desc">擅长通过用户洞察、数据实验和反馈闭环推动产品迭代与增长。曾在快手、猎聘、百度主导 AI 产品从 Demo 到规模化落地的全过程。</p>
-          <div class="hero-cta">
-            <a class="btn btn-accent" href="#experience">查看战绩<span class="arrow" aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="#contact">联系方式</a>
-          </div>
-          <div class="hero-metrics" role="list" aria-label="核心战绩">
-            <div class="metric" role="listitem">
-              <p class="metric-value"><span class="count" data-count="39" data-suffix="%">39%</span></p>
-              <p class="metric-label">提问 UV 率 <span class="metric-from">11% ↗</span></p>
-              <p class="metric-src">快手</p>
-            </div>
-            <div class="metric" role="listitem">
-              <p class="metric-value"><span class="count" data-count="85" data-suffix="%+">85%+</span></p>
-              <p class="metric-label">推荐准确率 <span class="metric-from">60% ↗</span></p>
-              <p class="metric-src">猎聘</p>
-            </div>
-            <div class="metric" role="listitem">
-              <p class="metric-value"><span class="count" data-count="200" data-suffix="+">200+</span></p>
-              <p class="metric-label">企业试点场景</p>
-              <p class="metric-src">百度</p>
-            </div>
-          </div>
+    </header>
+    <main id="main">
+      <section class="hero wrap" id="top">
+        <div class="hero-meta">
+          <span>林承列 / AI 产品经理</span
+          ><span>PRODUCT THINKING · SELECTED WORK</span>
         </div>
-
-        <!-- 中：头像视觉 -->
-        <div class="hero-visual">
-          <span class="ring" aria-hidden="true"></span>
-          <figure class="avatar-frame">
-            <img class="avatar" src="assets/avatar.jpg" alt="林承列的证件照" width="489" height="491">
-          </figure>
-          <span class="chip chip-1" aria-hidden="true">快手 · 产品运营</span>
-          <span class="chip chip-2" aria-hidden="true">猎聘 · AI 产品经理</span>
-          <span class="chip chip-3" aria-hidden="true">百度 · AI 产品经理</span>
-          <nav class="dots" aria-label="快速查看工作经历">
-            <a class="dot" href="#exp-kuaishou" aria-label="查看快手经历"></a>
-            <a class="dot" href="#exp-liepin" aria-label="查看猎聘经历"></a>
-            <a class="dot" href="#exp-baidu" aria-label="查看百度经历"></a>
-          </nav>
-        </div>
-
-        <!-- 右：编号信息栏 -->
-        <aside class="hero-aside" aria-label="页面导览">
-          <p class="aside-slogan">USER&nbsp;INSIGHT&nbsp;×&nbsp;DATA&nbsp;EXPERIMENT</p>
-          <ol class="aside-list">
-            <li>
-              <a href="#experience">
-                <span class="num">01</span>
-                <span class="zh">经历</span>
-                <span class="en">EXPERIENCE</span>
-              </a>
-            </li>
-            <li>
-              <a href="#skills">
-                <span class="num">02</span>
-                <span class="zh">能力</span>
-                <span class="en">CAPABILITIES</span>
-              </a>
-            </li>
-            <li>
-              <a href="#education">
-                <span class="num">03</span>
-                <span class="zh">教育</span>
-                <span class="en">EDUCATION</span>
-              </a>
-            </li>
-            <li>
-              <a href="#contact">
-                <span class="num">04</span>
-                <span class="zh">联系</span>
-                <span class="en">CONTACT</span>
-              </a>
-            </li>
-          </ol>
-          <p class="aside-foot">TIANJIN&nbsp;NORMAL&nbsp;UNIVERSITY<span aria-hidden="true">·</span>ECONOMICS</p>
-        </aside>
-      </div>
-
-      <a class="scroll-hint" href="#experience" aria-label="向下滚动查看工作经历">
-        <span class="scroll-hint-label">SCROLL</span>
-        <span class="scroll-hint-line" aria-hidden="true"></span>
-      </a>
-    </section>
-
-    <!-- ===== 公司与方法跑马灯 ===== -->
-    <div class="marquee" id="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>快手 KUAISHOU</span><span class="star">✦</span>
-        <span>百度 BAIDU</span><span class="star">✦</span>
-        <span>猎聘 LIEPIN</span><span class="star">✦</span>
-        <span>AI AGENT</span><span class="star">✦</span>
-        <span>A/B 实验</span><span class="star">✦</span>
-        <span>增长运营 GROWTH</span><span class="star">✦</span>
-        <span>快手 KUAISHOU</span><span class="star">✦</span>
-        <span>百度 BAIDU</span><span class="star">✦</span>
-        <span>猎聘 LIEPIN</span><span class="star">✦</span>
-        <span>AI AGENT</span><span class="star">✦</span>
-        <span>A/B 实验</span><span class="star">✦</span>
-        <span>增长运营 GROWTH</span><span class="star">✦</span>
-      </div>
-    </div>
-
-    <!-- ===== 01 经历 ===== -->
-    <section class="section" id="experience">
-      <header class="sec-head reveal">
-        <span class="sec-num" aria-hidden="true">01</span>
-        <div class="sec-titles">
-          <h2>实习经历</h2>
-          <p class="sec-en">EXPERIENCE</p>
-        </div>
-        <span class="sec-line" aria-hidden="true"></span>
-      </header>
-
-      <!-- 快手 -->
-      <article class="exp reveal" id="exp-kuaishou">
-        <header class="exp-head">
-          <div class="exp-head-main">
-            <h3>快手<span class="exp-company-en">KUAISHOU</span></h3>
-            <p class="exp-meta">创作者产品组 · 产品运营</p>
-          </div>
-          <p class="exp-date"><time>2026.01</time><span aria-hidden="true">–</span><time>2026.04</time></p>
-        </header>
-        <div class="exp-body">
-          <h4 class="exp-project-title">作品表现面板 AI 创作助手接入与增长优化</h4>
-          <p class="exp-project-brief">面向中腰部创作者：解决“看完数据不知道改什么”的问题，以主动诊断＋个性化提问替代固定模板</p>
-
-          <div class="exp-impact">
-            <div class="impact-item">
-              <p class="impact-num"><span class="impact-from">11%</span><span class="impact-arrow" aria-hidden="true">→</span>39%</p>
-              <p class="impact-label">提问 UV 率</p>
-            </div>
-            <div class="impact-item">
-              <p class="impact-num">+12%</p>
-              <p class="impact-label">诊断用户完播率</p>
-            </div>
-            <div class="impact-item">
-              <p class="impact-num">+9%</p>
-              <p class="impact-label">诊断用户互动率</p>
-            </div>
-          </div>
-
-          <div class="canvas">
-            <div class="cv-cell">
-              <p class="cv-tag">洞察 · INSIGHT</p>
-              <div class="mini-row">
-                <span class="mini-name">点击入口作者</span>
-                <span class="mini-bar"><span class="mini-fill" style="--w:.25"></span></span>
-                <span class="mini-val">25%</span>
-              </div>
-              <div class="mini-row">
-                <span class="mini-name">未点击作者</span>
-                <span class="mini-bar"><span class="mini-fill dim" style="--w:.11"></span></span>
-                <span class="mini-val">11%</span>
-              </div>
-              <p class="cv-note">SQL 分群对比 — 核心问题是看完数据缺少下一步动作</p>
-            </div>
-            <div class="cv-cell">
-              <p class="cv-tag">策略 · STRATEGY</p>
-              <div class="seg-chain">
-                <div class="seg">
-                  <p class="seg-name">新用户</p>
-                  <p class="seg-sub">入口文案</p>
-                </div>
-                <span class="seg-arrow" aria-hidden="true">→</span>
-                <div class="seg hot">
-                  <p class="seg-name">查看未提问</p>
-                  <p class="seg-sub">触达时机＋个性化</p>
-                </div>
-                <span class="seg-arrow" aria-hidden="true">→</span>
-                <div class="seg">
-                  <p class="seg-name">提问未发布</p>
-                  <p class="seg-sub">建议可执行性</p>
-                </div>
-              </div>
-              <p class="cv-note">按行为分层运营，各设提问 / 采纳 / 发布阶段指标</p>
-            </div>
-            <div class="cv-cell">
-              <p class="cv-tag">落地 · EXECUTION</p>
-              <div class="io-chain">
-                <span class="io-chip">CTR</span>
-                <span class="io-chip">完播率</span>
-                <span class="io-chip">互动率</span>
-                <span class="io-arrow" aria-hidden="true">→</span>
-                <span class="io-out">AI 按最弱指标生成可执行建议</span>
-              </div>
-              <p class="cv-note">推动产品 / 算法 / 模型三团队接入作品数据</p>
-            </div>
-            <div class="cv-cell">
-              <p class="cv-tag">验证 · VALIDATION</p>
-              <div class="ab-demo">
-                <div class="ab-toggle" role="group" aria-label="切换 A/B 实验方案">
-                  <button type="button" class="ab-btn is-active" data-ab="control">A · 固定模板</button>
-                  <button type="button" class="ab-btn" data-ab="treatment">B · 主动诊断＋个性化</button>
-                </div>
-                <div class="ab-panel" aria-live="polite">
-                  <blockquote class="ab-quote" data-ab-panel="control">
-                    <p>「关于作品数据的问题，都可以问我。」</p>
-                    <footer>用户看完数据，仍不知道问什么</footer>
-                  </blockquote>
-                  <blockquote class="ab-quote" data-ab-panel="treatment" hidden>
-                    <p>「你的完播率低于同层作者，建议从前 3 秒开头钩子入手；互动率偏弱，可在结尾追加提问引导。」</p>
-                    <footer>基于最弱指标主动生成 · 建议可直接执行（示意）</footer>
-                  </blockquote>
-                </div>
-                <p class="ab-stat">该方案提问 UV 率 <strong class="ab-value" data-ab-value>11%</strong></p>
-              </div>
-              <p class="cv-note">1.2 亿 UV · 5% 对照组 · 3 个月反转验证 · 贡献 20PP</p>
-            </div>
-          </div>
-          <p class="exp-result-text"><span class="exp-result-label">项目成果</span>提问 UV 率 11%→39%，主动诊断＋个性化提问贡献 20PP；诊断用户完播率 +12%、互动率 +9%。</p>
-        </div>
-      </article>
-
-      <!-- 猎聘 -->
-      <article class="exp reveal" id="exp-liepin">
-        <header class="exp-head">
-          <div class="exp-head-main">
-            <h3>猎聘<span class="exp-company-en">LIEPIN</span></h3>
-            <p class="exp-meta">AI 产品经理 · 同道精英（天津）信息技术有限公司</p>
-          </div>
-          <p class="exp-date"><time>2025.06</time><span aria-hidden="true">–</span><time>2025.12</time></p>
-        </header>
-        <div class="exp-body">
-          <h4 class="exp-project-title">招聘场景 AI Agent 产品设计与落地</h4>
-          <p class="exp-project-brief">面向中小规模招聘方（HR＋业务主管）：解决自然语言搜索缺少关键约束的问题，将猎头澄清经验 Skill 化、由 Agent 主动追问</p>
-
-          <div class="exp-impact">
-            <div class="impact-item">
-              <p class="impact-num"><span class="impact-from">60%</span><span class="impact-arrow" aria-hidden="true">→</span>85%+</p>
-              <p class="impact-label">推荐准确率</p>
-            </div>
-            <div class="impact-item">
-              <p class="impact-num"><span class="impact-from">35%</span><span class="impact-arrow" aria-hidden="true">→</span>68%</p>
-              <p class="impact-label">需求首次满足率</p>
-            </div>
-            <div class="impact-item">
-              <p class="impact-num">+15PP</p>
-              <p class="impact-label">意图澄清 Skill 贡献</p>
-            </div>
-          </div>
-
-          <div class="canvas">
-            <div class="cv-cell">
-              <p class="cv-tag">洞察 · INSIGHT</p>
-              <div class="num-blocks">
-                <div class="num-b"><b>30+</b><span>招聘方访谈</span></div>
-                <div class="num-b"><b>4</b><span>字段编码维度</span></div>
-              </div>
-              <div class="chip-row">
-                <span class="io-chip">岗位</span>
-                <span class="io-chip">能力</span>
-                <span class="io-chip">行业</span>
-                <span class="io-chip">年限</span>
-              </div>
-              <p class="cv-note">「找个懂增长的人」缺关键约束 — 核心是输入信息不足，而非算法</p>
-            </div>
-            <div class="cv-cell">
-              <p class="cv-tag">策略 · STRATEGY</p>
-              <ol class="flow-chain" aria-label="产品流程">
-                <li class="flow-step">需求输入</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step hot">意图澄清</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step">人才搜索</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step">结果反馈</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step">触达</li>
-              </ol>
-              <p class="cv-note">猎头澄清经验 Skill 化，由 Agent 主动追问补全约束</p>
-            </div>
-            <div class="cv-cell">
-              <p class="cv-tag">落地 · EXECUTION</p>
-              <div class="module-grid module-grid-2">
-                <div class="mod hot">
-                  <p class="mod-name">意图澄清</p>
-                  <p class="mod-sub">+15PP · 主动追问</p>
-                </div>
-                <div class="mod">
-                  <p class="mod-name">人才搜索</p>
-                  <p class="mod-sub">约束补全检索</p>
-                </div>
-                <div class="mod">
-                  <p class="mod-name">触达</p>
-                  <p class="mod-sub">候选人沟通</p>
-                </div>
-                <div class="mod">
-                  <p class="mod-name">看板管理</p>
-                  <p class="mod-sub">流程跟踪</p>
-                </div>
-              </div>
-              <p class="cv-note">Agent Demo · Few-shot＋RAG 知识库注入专业信息</p>
-            </div>
-            <div class="cv-cell">
-              <p class="cv-tag">验证 · VALIDATION</p>
-              <div class="num-blocks">
-                <div class="num-b"><b>200+</b><span>澄清评测 Case</span></div>
-                <div class="num-b"><b>100+</b><span>搜索评测 Case</span></div>
-                <div class="num-b"><b>22</b><span>真实 HR 试用</span></div>
-                <div class="num-b"><b>4</b><span>轮迭代</span></div>
-              </div>
-              <p class="cv-note">模糊 / 矛盾 / 跨领域输入全覆盖 · Prompt 改动跑回归</p>
-            </div>
-          </div>
-
-          <div class="chat-demo">
-            <div class="chat-window" aria-live="polite">
-              <p class="chat-note">Agent 意图澄清 · 交互演示（示意）</p>
-              <div class="msg msg-user">找个懂增长的人</div>
-              <div class="msg msg-agent">收到，先确认几个关键约束：<br>① 偏投放、内容还是商业化增长？<br>② 期望年限区间？<br>③ 行业背景有要求吗？</div>
-              <div class="msg msg-user">内容增长，3 年左右，最好有短视频行业经验</div>
-              <div class="msg msg-agent msg-final">约束已补全<span class="chat-tag">内容增长</span><span class="chat-tag">3 年+</span><span class="chat-tag">短视频</span><span class="chat-done">→ 生成精准搜索</span></div>
-            </div>
-            <button type="button" class="chat-replay">↻ 重新演示</button>
-            <div class="chat-states" role="group" aria-label="查看澄清过程">
-              <button type="button" class="chat-state is-active" data-chat-state="vague" aria-pressed="true">模糊需求</button>
-              <button type="button" class="chat-state" data-chat-state="clear" aria-pressed="false">澄清约束</button>
-              <button type="button" class="chat-state" data-chat-state="search" aria-pressed="false">确认搜索</button>
-            </div>
-          </div>
-          <p class="exp-result-text"><span class="exp-result-label">项目成果</span>推荐准确率 60% → 85%+，意图澄清 Skill 独立贡献约 15PP；需求首次满足率 35%→68%。</p>
-        </div>
-      </article>
-
-      <!-- 百度 -->
-      <article class="exp reveal" id="exp-baidu">
-        <header class="exp-head">
-          <div class="exp-head-main">
-            <h3>百度<span class="exp-company-en">BAIDU</span></h3>
-            <p class="exp-meta">智能云事业部 · AI 产品经理</p>
-          </div>
-          <p class="exp-date"><time>2025.02</time><span aria-hidden="true">–</span><time>2025.06</time></p>
-        </header>
-        <div class="exp-body">
-          <h4 class="exp-project-title">秒哒 AI 原生无代码应用平台设计与落地</h4>
-          <p class="exp-project-brief">面向无技术背景的业务人员：解决“有想法但描述不清导致创建失败”的问题，先确认 AI 执行计划再创建，并以评测体系持续优化</p>
-
-          <div class="exp-impact">
-            <div class="impact-item">
-              <p class="impact-num"><span class="impact-from">62</span><span class="impact-arrow" aria-hidden="true">→</span>82<span class="impact-unit">分</span></p>
-              <p class="impact-label">核心场景评分</p>
-            </div>
-            <div class="impact-item">
-              <p class="impact-num">200+</p>
-              <p class="impact-label">企业试点场景</p>
-            </div>
-            <div class="impact-item">
-              <p class="impact-num">−45%</p>
-              <p class="impact-label">Token 成本</p>
-            </div>
-          </div>
-
-          <div class="canvas">
-            <div class="cv-cell">
-              <p class="cv-tag">洞察 · INSIGHT</p>
-              <div class="chip-row">
-                <span class="io-chip">需求理解</span>
-                <span class="io-chip hot">执行计划</span>
-                <span class="io-chip">代码生成</span>
-                <span class="io-chip">页面渲染</span>
-              </div>
-              <p class="cv-note">失败 Case 四类归因 — 首次创建成功的关键在需求澄清</p>
-            </div>
-            <div class="cv-cell">
-              <p class="cv-tag">策略 · STRATEGY</p>
-              <ol class="flow-chain" aria-label="产品流程">
-                <li class="flow-step">自然语言输入</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step">执行计划＋PRD</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step hot">用户确认</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step">实时创建</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step">预览迭代</li>
-                <li class="flow-sep" aria-hidden="true">→</li>
-                <li class="flow-step">发布</li>
-              </ol>
-              <p class="cv-note">先确认 AI 执行计划再创建 · 配套模板 / 管理 / 回退 / 广场</p>
-            </div>
-            <div class="cv-cell">
-              <p class="cv-tag">落地 · EXECUTION</p>
-              <div class="baidu-steps" role="tablist" aria-label="产品流程步骤">
-                <button type="button" class="baidu-step is-active" data-step="brief" aria-selected="true">01 描述需求</button>
-                <button type="button" class="baidu-step" data-step="plan" aria-selected="false">02 执行计划</button>
-                <button type="button" class="baidu-step" data-step="preview" aria-selected="false">03 应用预览</button>
-              </div>
-              <div class="pipeline">
-                <div class="pipe-node">
-                  <span class="pipe-dot" aria-hidden="true"></span>
-                  <p class="pipe-name">需求理解</p>
-                  <p class="pipe-sub">场景推荐＋Todo 拆解</p>
-                </div>
-                <span class="pipe-link" aria-hidden="true"></span>
-                <div class="pipe-node">
-                  <span class="pipe-dot" aria-hidden="true"></span>
-                  <p class="pipe-name">执行计划生成</p>
-                  <p class="pipe-sub">输出结构化 PRD</p>
-                </div>
-                <span class="pipe-link" aria-hidden="true"></span>
-                <div class="pipe-node">
-                  <span class="pipe-dot" aria-hidden="true"></span>
-                  <p class="pipe-name">代码生成</p>
-                  <p class="pipe-sub">无代码应用构建</p>
-                </div>
-                <span class="pipe-link" aria-hidden="true"></span>
-                <div class="pipe-node">
-                  <span class="pipe-dot" aria-hidden="true"></span>
-                  <p class="pipe-name">UI 渲染</p>
-                  <p class="pipe-sub">页面实时呈现</p>
-                </div>
-              </div>
-            </div>
-            <div class="cv-cell">
-              <p class="cv-tag">验证 · VALIDATION</p>
-              <div class="num-blocks">
-                <div class="num-b"><b>3</b><span>维评测体系</span></div>
-                <div class="num-b"><b>62→82</b><span>核心场景评分</span></div>
-                <div class="num-b"><b>200+</b><span>企业试点场景</span></div>
-              </div>
-              <div class="chip-row">
-                <span class="io-chip">质量</span>
-                <span class="io-chip">效果</span>
-                <span class="io-chip">成本</span>
-                <span class="io-chip">Token −45%</span>
-              </div>
-              <p class="cv-note">按失败频次与影响定优先级，持续迭代模板与生成策略</p>
-            </div>
-          </div>
-          <p class="exp-result-text"><span class="exp-result-label">项目成果</span>企业试点覆盖 200+ 场景，核心场景评分 62→82 分；Token 降 45%，30 天活跃应用占 58%。</p>
-        </div>
-      </article>
-    </section>
-
-    <!-- ===== 02 能力 ===== -->
-    <section class="section" id="skills">
-      <header class="sec-head reveal">
-        <span class="sec-num" aria-hidden="true">02</span>
-        <div class="sec-titles">
-          <h2>核心能力</h2>
-          <p class="sec-en">CAPABILITIES</p>
-        </div>
-        <span class="sec-line" aria-hidden="true"></span>
-      </header>
-      <div class="skill-grid">
-        <div class="skill-col reveal">
-          <p class="skill-num">01</p>
-          <h3>用户与需求</h3>
-          <p class="skill-en">USER&nbsp;&amp;&nbsp;RESEARCH</p>
-          <div class="skill-tags">
-            <span class="tag">用户访谈</span>
-            <span class="tag">场景观察</span>
-            <span class="tag">需求编码</span>
-            <span class="tag">用户分层</span>
-            <span class="tag">用户路径分析</span>
-            <span class="tag">需求优先级判断</span>
-          </div>
-        </div>
-        <div class="skill-col reveal">
-          <p class="skill-num">02</p>
-          <h3>产品运营</h3>
-          <p class="skill-en">GROWTH&nbsp;OPERATION</p>
-          <div class="skill-tags">
-            <span class="tag">AI 功能冷启动</span>
-            <span class="tag">使用转化漏斗</span>
-            <span class="tag">内容与话术设计</span>
-            <span class="tag">场景模板</span>
-            <span class="tag">用户反馈闭环</span>
-            <span class="tag">运营复盘</span>
-          </div>
-        </div>
-        <div class="skill-col reveal">
-          <p class="skill-num">03</p>
-          <h3>数据与实验</h3>
-          <p class="skill-en">DATA&nbsp;&amp;&nbsp;EXPERIMENT</p>
-          <div class="skill-tags">
-            <span class="tag">SQL 分群</span>
-            <span class="tag">漏斗分析</span>
-            <span class="tag">A/B 实验</span>
-            <span class="tag">指标归因</span>
-            <span class="tag">质量评测</span>
-            <span class="tag">回归验证</span>
-            <span class="tag">策略迭代闭环</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 03 教育 ===== -->
-    <section class="section" id="education">
-      <header class="sec-head reveal">
-        <span class="sec-num" aria-hidden="true">03</span>
-        <div class="sec-titles">
-          <h2>教育背景</h2>
-          <p class="sec-en">EDUCATION</p>
-        </div>
-        <span class="sec-line" aria-hidden="true"></span>
-      </header>
-      <div class="edu-card reveal">
-        <div class="edu-main">
-          <h3>天津师范大学</h3>
-          <p class="edu-meta">经济学 · 本科</p>
-        </div>
-        <p class="edu-date"><time>2023.09</time><span aria-hidden="true">–</span><time>2027.06</time></p>
-        <div class="edu-extra">
-          <p class="edu-courses">
-            <span class="edu-courses-label">核心课程</span>
-            <span class="tag">市场营销</span>
-            <span class="tag">管理学</span>
-            <span class="tag">消费者心理学</span>
+        <h1>从业务问题出发，<br />让每一次改变<br /><em>都有判断依据。</em></h1>
+        <div class="hero-bottom">
+          <p>
+            在快手、猎聘、百度的产品实践中，<br />把用户说不清的问题，变成可验证的产品机制。
           </p>
-          <p class="edu-rank"><span class="rank-badge">专业前 10%</span></p>
+          <a class="primary" href="#experience"
+            >探索三个关键决策 <span>↓</span></a
+          ><img src="assets/avatar.jpg" width="489" height="491" alt="林承列" />
         </div>
+        <div class="case-index">
+          <a href="#exp-kuaishou"
+            ><span>01 / 快手</span
+            ><strong>使用增长，先改入口<br />还是先降低提问门槛？</strong
+            ><b>增长判断 ↗</b></a
+          ><a href="#exp-liepin"
+            ><span>02 / 猎聘</span
+            ><strong>搜索跑偏，先改算法<br />还是先澄清需求？</strong
+            ><b>质量与成本 ↗</b></a
+          ><a href="#exp-baidu"
+            ><span>03 / 百度</span
+            ><strong>页面能运行，<br />为什么业务仍然跑不通？</strong
+            ><b>评测与归因 ↗</b></a
+          >
+        </div>
+      </section>
+      <div class="section-band wrap" id="experience">
+        <span>SELECTED DECISIONS</span>
+        <p>
+          三个场景，同一个出发点：<br /><strong>找到值得解决的问题。</strong>
+        </p>
+        <span>01 — 03</span>
       </div>
-    </section>
-
-    <!-- ===== 04 联系 ===== -->
-    <section class="section section-contact" id="contact">
-      <header class="sec-head reveal">
-        <span class="sec-num" aria-hidden="true">04</span>
-        <div class="sec-titles">
-          <h2>联系方式</h2>
-          <p class="sec-en">CONTACT</p>
+      <article class="case wrap" id="exp-kuaishou">
+        <header class="case-head">
+          <div class="case-meta">
+            <span>01 / 快手 · 创作者产品组</span
+            ><span>产品运营 · 2026.01 — 2026.04</span>
+          </div>
+          <h2>让用户不用先学会提问，<br />就能迈出创作的下一步。</h2>
+          <p class="lead">
+            看得到数据，不等于知道怎么改。我的判断是：先把单条作品的问题解释清楚，再邀请用户继续追问。
+          </p>
+        </header>
+        <div class="case-context">
+          <div>
+            <small>业务位置</small>
+            <ol class="journey">
+              <li>查看数据</li>
+              <li class="current">理解问题</li>
+              <li class="current">采纳建议</li>
+              <li>再次创作</li>
+            </ol>
+          </div>
+          <p>
+            <small>我的工作</small>Skill 体系、运营
+            Know-How、入口触发方案与实验设计。Mentor
+            负责方向把控和跨团队资源协调。
+          </p>
         </div>
-        <span class="sec-line" aria-hidden="true"></span>
-      </header>
-      <div class="contact-grid">
-        <a class="contact-item reveal" href="tel:16629076367">
-          <p class="contact-label">电话 · PHONE</p>
-          <p class="contact-value">166&nbsp;2907&nbsp;6367</p>
-        </a>
-        <a class="contact-item reveal" href="mailto:16629076367@163.com">
-          <p class="contact-label">邮箱 · EMAIL</p>
-          <p class="contact-value">16629076367@163.com</p>
-        </a>
-        <div class="contact-item reveal">
-          <p class="contact-label">微信 · WECHAT</p>
-          <p class="contact-value">153&nbsp;9663&nbsp;1779</p>
+        <div class="decision-strip">
+          <div>
+            <small>观察</small>
+            <p>引导语点击率仅 3%，通用入口难以帮助用户提出具体问题。</p>
+          </div>
+          <div>
+            <small>判断</small>
+            <p>将“曝光是否足够”与“触发是否相关”拆开验证，避免混淆增长来源。</p>
+          </div>
+          <div>
+            <small>取舍</small>
+            <p>
+              主动诊断降低提问门槛，也要求建议有归因依据，不能看见低指标就直接下结论。
+            </p>
+          </div>
         </div>
-      </div>
-      <p class="contact-note reveal">期待与你交流 AI 产品的从 0 到 1，与从 1 到 N。</p>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <span class="footer-line" aria-hidden="true"></span>
-    <p class="footer-text">© <span id="year">2026</span> 林承列 · LIN&nbsp;CHENGLIE · ALL&nbsp;RIGHTS&nbsp;RESERVED</p>
-  </footer>
-
-  <script src="js/main.js"></script>
-  <script src="assets/vendor/three.min.js"></script>
-  <script src="js/three-scene.js" defer></script>
-</body>
+        <div class="workbench" id="ks-demo">
+          <div class="bench-title">
+            <span>作品表现 / CREATOR STUDIO</span
+            ><span class="prototype">交互原型 · 状态用于讲解</span>
+          </div>
+          <div class="demo-grid">
+            <div class="product">
+              <div class="product-heading">
+                <div>
+                  <small>单条作品</small>
+                  <h3>这条内容，下一次怎么改？</h3>
+                </div>
+                <span class="status">表现待分析</span>
+              </div>
+              <div class="segmented" aria-label="方案对比">
+                <button
+                  type="button"
+                  data-ks-mode="before"
+                  aria-pressed="false"
+                >
+                  原方案</button
+                ><button type="button" data-ks-mode="after" aria-pressed="true">
+                  主动诊断
+                </button>
+              </div>
+              <div class="metric-select" aria-label="选择诊断维度">
+                <button
+                  type="button"
+                  data-metric="retention"
+                  aria-pressed="true"
+                >
+                  <span>完播表现</span><strong>检查开头留存</strong
+                  ><i></i></button
+                ><button
+                  type="button"
+                  data-metric="engagement"
+                  aria-pressed="false"
+                >
+                  <span>互动表现</span><strong>检查回应动机</strong
+                  ><i></i></button
+                ><button type="button" data-metric="click" aria-pressed="false">
+                  <span>点击表现</span><strong>检查内容预期</strong><i></i>
+                </button>
+              </div>
+              <div class="diagnosis" aria-live="polite">
+                <small id="ks-label">主动诊断 / 完播表现</small>
+                <h4 id="ks-title">完播偏弱，先检查前 3 秒留存。</h4>
+                <p id="ks-copy">
+                  如果开头流失集中，优先检查吸引力；如果流失发生在后段，再检查叙事节奏。
+                </p>
+                <p class="suggestion" id="ks-action">
+                  下一步：对照开头与后段表现，确认问题后再改写。
+                </p>
+              </div>
+            </div>
+            <aside class="reason">
+              <small>我的产品判断</small>
+              <h3 id="ks-reason">
+                把“问什么”的负担，转成一个可继续探索的问题。
+              </h3>
+              <p>
+                主动不等于武断。让 AI 先走完分析链路，再给用户可执行的建议。
+              </p>
+              <ol class="mechanism">
+                <li>
+                  <b>01</b>
+                  <div>数据解析<span>识别需要进一步检查的指标</span></div>
+                </li>
+                <li>
+                  <b>02</b>
+                  <div>
+                    运营经验归因<span id="ks-rule"
+                      >检查前 3 秒留存，再区分开头与节奏</span
+                    >
+                  </div>
+                </li>
+                <li>
+                  <b>03</b>
+                  <div>建议生成<span>将专业判断转成用户能执行的动作</span></div>
+                </li>
+              </ol>
+              <p class="caption">
+                完播分析来自项目讲述；其他维度用于说明同一机制的交互方式。
+              </p>
+            </aside>
+          </div>
+        </div>
+        <div class="outcomes">
+          <div>
+            <small>使用 / 提问 UV 率</small
+            ><strong>11% <span>→</span> 39%</strong>
+            <p>整体提升 28 个百分点</p>
+          </div>
+          <div>
+            <small>深度 / 二轮追问率</small><strong>34%</strong>
+            <p>三轮追问率 18%</p>
+          </div>
+          <div>
+            <small>作品表现 / 诊断用户</small
+            ><strong>+12% <span>/</span> +9%</strong>
+            <p>完播率 / 互动率变化</p>
+          </div>
+        </div>
+        <details>
+          <summary>
+            为什么这样判断？查看实验思路与结果边界 <span>+</span>
+          </summary>
+          <div class="detail-grid">
+            <section>
+              <h3>拆开变量，才能解释增长</h3>
+              <p>
+                项目讲述记录了两类干预：入口位置优化，以及主动诊断＋个性化提问。分组验证用于区分位置变化和内容相关性的作用。
+              </p>
+              <p>
+                讲述中的贡献拆分为 8PP 与约
+                20PP。分组设计、样本与统计口径未随材料提供，因此不将其绘制为已核验的因果分解图。
+              </p>
+            </section>
+            <section>
+              <h3>从使用到价值，还需要验证</h3>
+              <p>
+                3% 是引导语点击率，11%→39% 是提问 UV
+                率，两者不是同一个指标。作品表现的变化也不能直接排除创作者选择差异等因素。
+              </p>
+              <p>
+                <b>回看：</b
+                >继续观察建议采纳与后续创作，判断增长是否真正转化为用户价值。把诊断前置到选题，是下一步探索方向。
+              </p>
+            </section>
+          </div>
+        </details>
+      </article>
+      <article class="case wrap" id="exp-liepin">
+        <header class="case-head">
+          <div class="case-meta">
+            <span>02 / 猎聘 · 招聘 AI Agent</span
+            ><span>AI 产品经理 · 2025.06 — 2025.12</span>
+          </div>
+          <h2>先问清楚要找谁，<br />再让每一步搜索更有价值。</h2>
+          <p class="lead">
+            “找个懂增长的人”还不是可执行的搜索条件。澄清能提高输入质量，但每多问一轮，也在消耗用户的耐心。
+          </p>
+        </header>
+        <div class="case-context">
+          <div>
+            <small>业务位置</small>
+            <ol class="journey">
+              <li>表达需求</li>
+              <li class="current">澄清条件</li>
+              <li class="current">搜索人才</li>
+              <li>商业化触达</li>
+            </ol>
+          </div>
+          <p>
+            <small>我的工作</small>需求访谈与案例编码、Agent 原型与 PRD、Demo
+            搭建、评测设计和 HR 试用迭代。
+          </p>
+        </div>
+        <div class="decision-strip">
+          <div>
+            <small>证据</small>
+            <p>
+              将 30+
+              招聘方的搜索案例按岗位、能力、行业、年限编码，与搜索失败样本交叉比对。
+            </p>
+          </div>
+          <div>
+            <small>选择</small>
+            <p>
+              优先补全影响搜索的约束，把猎头工作流拆成输入明确、职责单一、输出可验证的模块。
+            </p>
+          </div>
+          <div>
+            <small>迭代</small>
+            <p>
+              按反馈频次与业务影响排序，平均澄清从 6 轮压缩到 3
+              轮，降低获得结果的操作成本。
+            </p>
+          </div>
+        </div>
+        <div class="workbench" id="lp-demo">
+          <div class="bench-title">
+            <span>招聘工作台 / RECRUITING DESK</span
+            ><span class="prototype">流程重绘 · 非历史聊天记录</span>
+          </div>
+          <div class="step-controls" aria-label="澄清步骤">
+            <button type="button" data-lp-step="0" aria-pressed="false">
+              01 模糊需求</button
+            ><button type="button" data-lp-step="1" aria-pressed="false">
+              02 澄清约束</button
+            ><button type="button" data-lp-step="2" aria-pressed="true">
+              03 确认搜索
+            </button>
+          </div>
+          <div class="demo-grid">
+            <div class="conversation">
+              <div class="bubble user">找个懂增长的人</div>
+              <div class="bubble" data-message="1">
+                <small>澄清</small
+                >偏内容、投放，还是商业化增长？期望什么年限和行业经验？
+              </div>
+              <div class="bubble user" data-message="2">
+                内容增长，3 年左右，最好有短视频行业经验。
+              </div>
+              <div class="bubble final" data-message="2">
+                已整理为可确认的搜索条件。先检查理解是否一致，再进入搜索。
+              </div>
+            </div>
+            <aside class="conditions">
+              <small>需求 → 结构化条件</small>
+              <h3>人才画像</h3>
+              <dl>
+                <div>
+                  <dt>能力方向</dt>
+                  <dd data-field="content">内容增长</dd>
+                </div>
+                <div>
+                  <dt>行业偏好</dt>
+                  <dd data-field="industry">短视频</dd>
+                </div>
+                <div>
+                  <dt>经验年限</dt>
+                  <dd data-field="years">3 年左右</dd>
+                </div>
+              </dl>
+              <p class="state-note" id="lp-judgment" aria-live="polite">
+                保留“左右”和“最好”的弹性，避免把偏好误当成硬性筛选条件。
+              </p>
+              <div class="search-ready" id="lp-ready">
+                条件已确认 → 可以搜索
+              </div>
+            </aside>
+          </div>
+          <div class="demo-footer">
+            <span id="lp-progress">完整过程</span>
+            <div>
+              <button type="button" class="text-button" id="lp-reset">
+                重播</button
+              ><button type="button" class="text-button" id="lp-all">
+                显示完整过程</button
+              ><button type="button" class="primary" id="lp-next">
+                下一步 →
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="validation">
+          <div>
+            <span>01 / 质量下限</span>
+            <h3>离线评测与回归</h3>
+            <p>
+              200+ 澄清案例、100+
+              搜索案例，覆盖模糊、矛盾与跨领域输入，检查修改是否引入退化。
+            </p>
+          </div>
+          <div>
+            <span>02 / 相对质量</span>
+            <h3>20 个岗位混排盲评</h3>
+            <p>
+              隐藏主站与 Agent 的结果来源，让用人方评价，降低对 AI
+              标签的预期影响。
+            </p>
+          </div>
+          <div>
+            <span>03 / 真实使用</span>
+            <h3>漏斗与 HR 试用</h3>
+            <p>
+              22 名 HR、60+ 反馈、4
+              轮迭代，观察澄清完成、有效搜索、采纳和商业化发起。
+            </p>
+          </div>
+        </div>
+        <div class="outcomes">
+          <div>
+            <small>推荐准确率</small><strong>60% <span>→</span> 85%+</strong>
+            <p>既有项目总结口径</p>
+          </div>
+          <div>
+            <small>平均澄清轮次</small><strong>6 <span>→</span> 3</strong>
+            <p>优化获得结果的过程成本</p>
+          </div>
+          <div>
+            <small>需求首次满足率</small><strong>35% <span>→</span> 68%</strong>
+            <p>质量与体验共同观察</p>
+          </div>
+        </div>
+        <details>
+          <summary>
+            如何做取舍、推进迭代，并判断商业价值？ <span>+</span>
+          </summary>
+          <div class="detail-grid">
+            <section>
+              <h3>不平均处理反馈</h3>
+              <p>
+                试用期按“反馈频次 ×
+                业务影响”安排优先级，重点优化澄清轮次、结果解释与操作路径，沉淀可复用的试用运营
+                SOP。
+              </p>
+              <p>
+                模块拆太细会增加编排和维护成本，太粗又难以定位问题。我的方法是检查每个模块的输入、职责与可验证输出。
+              </p>
+            </section>
+            <section>
+              <h3>质量证据与商业结果分别看</h3>
+              <p>
+                项目总结记录商业化发起率由 20–30% 变化到
+                30–40%。盲评支持结果质量比较，但不能单独证明商业化变化的因果关系，也不等于收入增长。
+              </p>
+              <p>
+                准确率与首次满足率的判定细则未随材料提供。<b>回看：</b>在更少追问的同时，需要持续监控搜索质量和用户退出，避免只优化对话轮次。
+              </p>
+            </section>
+          </div>
+        </details>
+      </article>
+      <article class="case wrap" id="exp-baidu">
+        <header class="case-head">
+          <div class="case-meta">
+            <span>03 / 百度 · 秒哒</span
+            ><span>AI 产品经理 · 2025.02 — 2025.06</span>
+          </div>
+          <h2>页面能跑起来，<br />不代表业务能跑下去。</h2>
+          <p class="lead">
+            首版测试覆盖了场景，却没有覆盖真实用户的表达方式。我从评测输入的偏差入手，把“可用”的标准落到业务实体和流程上。
+          </p>
+        </header>
+        <div class="case-context">
+          <div>
+            <small>业务位置</small>
+            <ol class="journey">
+              <li>描述需求</li>
+              <li class="current">补齐与确认</li>
+              <li class="current">生成与评测</li>
+              <li>发布使用</li>
+            </ol>
+          </div>
+          <p>
+            <small>我的工作</small
+            >场景与评测集建设、失败案例归因、场景补齐与需求确认方案，并参与生成架构的工程协同。
+          </p>
+        </div>
+        <div class="decision-strip">
+          <div>
+            <small>原有假设</small>
+            <p>表单、看板、审批、CRM 四类场景跑通，意味着已经覆盖主要需求。</p>
+          </div>
+          <div>
+            <small>反例</small>
+            <p>
+              PM
+              写的测试输入完整，用户却只说“做个客户跟进”。缺少字段与流转规则，生成结果仍然不可用。
+            </p>
+          </div>
+          <div>
+            <small>修正</small>
+            <p>
+              用需求补全对照定位问题，统一 UI
+              与功能评测标准，再把补齐和确认做成产品机制。
+            </p>
+          </div>
+        </div>
+        <div class="workbench" id="bd-demo">
+          <div class="bench-title">
+            <span>应用构建 / CUSTOMER WORKSPACE</span
+            ><span class="prototype">交互原型 · 示例业务记录</span>
+          </div>
+          <div class="step-controls" aria-label="生成步骤">
+            <button type="button" data-bd-step="0" aria-pressed="false">
+              01 描述需求</button
+            ><button type="button" data-bd-step="1" aria-pressed="true">
+              02 确认计划</button
+            ><button type="button" data-bd-step="2" aria-pressed="false">
+              03 应用预览
+            </button>
+          </div>
+          <div class="demo-grid">
+            <div class="plan">
+              <small id="bd-stage">确认 AI 理解的业务规则</small>
+              <h3>“做个客户跟进系统”</h3>
+              <p>一句业务诉求，还需要转成可以执行的规格。</p>
+              <fieldset id="bd-options">
+                <legend>确认需要的功能，右侧预览同步更新</legend>
+                <label
+                  ><input type="checkbox" data-feature="records" checked /><span
+                    ><b>跟进记录</b
+                    ><small>每次联系后，留下一条可追溯记录</small></span
+                  ></label
+                ><label
+                  ><input type="checkbox" data-feature="status" checked /><span
+                    ><b>状态流转</b
+                    ><small>让客户从待联系进入跟进中、已完成</small></span
+                  ></label
+                ><label
+                  ><input
+                    type="checkbox"
+                    data-feature="reminders"
+                    checked
+                  /><span
+                    ><b>到期提醒</b><small>让下一次跟进有明确时间</small></span
+                  ></label
+                >
+              </fieldset>
+              <p class="state-note" id="bd-summary" aria-live="polite">
+                计划包含：跟进记录、状态流转、到期提醒。
+              </p>
+            </div>
+            <div class="crm">
+              <div class="crm-top">
+                <span>CRM / 客户跟进</span
+                ><span class="status" id="bd-preview-label">计划预览</span>
+              </div>
+              <div class="crm-card">
+                <small>示例客户</small>
+                <h4>项目合作咨询</h4>
+                <div data-preview="status">
+                  <label for="crm-status">当前阶段</label
+                  ><select id="crm-status">
+                    <option>待联系</option>
+                    <option>跟进中</option>
+                    <option>已完成</option>
+                  </select>
+                </div>
+                <div data-preview="records" class="crm-history">
+                  <small>跟进记录</small>
+                  <p>已沟通初步需求，下一步确认方案范围。</p>
+                </div>
+                <div data-preview="reminders" class="reminder">
+                  <span>下一次跟进</span><b>确认方案范围</b
+                  ><small id="crm-reminder">到期时提醒负责人</small>
+                </div>
+                <p id="crm-empty" hidden>
+                  当前只有客户信息，尚未加入跟进流程。
+                </p>
+              </div>
+              <p class="caption">切换左侧规则，观察应用能力如何变化。</p>
+            </div>
+          </div>
+          <div class="bench-insight" id="bd-judgment">
+            增加确认步骤会增加操作成本，因此用可理解的选择项，让用户检查 AI
+            的补全是否符合业务。
+          </div>
+        </div>
+        <div class="validation">
+          <div>
+            <span>01 / 建立共同标准</span>
+            <h3>把“好不好”变成检查项</h3>
+            <p>
+              UI
+              检查一致性与布局；功能检查实体字段、状态流转和异常处理。测试集加入真实用户的口语化输入。
+            </p>
+          </div>
+          <div>
+            <span>02 / 定位问题</span>
+            <h3>补全输入，再观察输出</h3>
+            <p>
+              对典型失败需求补齐实体与逻辑，观察生成效果变化，为需求解析层的改进提供依据。
+            </p>
+          </div>
+          <div>
+            <span>03 / 推动共识</span>
+            <h3>用可复现结果讨论方向</h3>
+            <p>
+              围绕统一标准与对照结果，推进场景补齐、需求确认，以及复杂应用任务拆解的工程协同。
+            </p>
+          </div>
+        </div>
+        <div class="outcomes">
+          <div>
+            <small>综合生成质量评分</small><strong>62 <span>→</span> 82</strong>
+            <p>项目总结中的评测结果</p>
+          </div>
+          <div>
+            <small>功能完整性</small><strong>80% <span>→</span> 90%</strong>
+            <p>复杂应用评测</p>
+          </div>
+          <div>
+            <small>Token 消耗</small><strong>−45%</strong>
+            <p>对应复杂应用优化口径</p>
+          </div>
+        </div>
+        <details>
+          <summary>
+            原来的判断如何被修正？查看评测、取舍与复盘 <span>+</span>
+          </summary>
+          <div class="detail-grid">
+            <section>
+              <h3>场景覆盖，不等于表达覆盖</h3>
+              <p>
+                最初评测验证的是完整需求下的生成能力。内测暴露真实输入缺少字段和流程，因此扩充测试集，并把业务功能完整性纳入标准。
+              </p>
+              <p>
+                补全需求的对照为输入层改进提供支持，但不能据此断言所有失败都与生成模型无关。场景补全也可能猜错，因此需要用户确认与微调。
+              </p>
+            </section>
+            <section>
+              <h3>机制与工程，共同影响结果</h3>
+              <p>
+                项目还推进了 Todo List 拆解与子 Agent
+                生成。质量和成本结果来自多项改进，不全部归因于需求确认这一处交互。
+              </p>
+              <p>
+                <b>回看：</b
+                >让测试更接近真实用户表达，并持续检查补齐错误与确认负担。讲述中“提升
+                30%”的指标定义不一致，未作为本页结果引用。
+              </p>
+            </section>
+          </div>
+        </details>
+      </article>
+      <section class="methods wrap" id="skills">
+        <div class="section-label">HOW I WORK / 可迁移的方法</div>
+        <h2>把判断留下来，<br />让下一次决策更有依据。</h2>
+        <div class="method-grid">
+          <a href="#exp-kuaishou"
+            ><span>01 / 定位</span>
+            <h3>拆开现象与原因</h3>
+            <p>把曝光、触发相关性与后续价值分开观察，用实验区分变量。</p>
+            <b>查看快手案例 ↗</b></a
+          ><a href="#exp-liepin"
+            ><span>02 / 取舍</span>
+            <h3>同时看质量与成本</h3>
+            <p>澄清能提高输入质量，也会增加操作负担，用评测与漏斗共同判断。</p>
+            <b>查看猎聘案例 ↗</b></a
+          ><a href="#exp-baidu"
+            ><span>03 / 修正</span>
+            <h3>让真实反馈挑战假设</h3>
+            <p>当测试通过而用户仍觉得不好用，先检查测试是否代表真实场景。</p>
+            <b>查看百度案例 ↗</b></a
+          >
+        </div>
+      </section>
+      <section class="about wrap" id="education">
+        <div>
+          <small>ABOUT / 教育背景</small>
+          <h3>天津师范大学 · 经济学本科</h3>
+          <p>2023.09 — 2027.06 · 专业前 10%</p>
+        </div>
+        <p>
+          关注用户理解、业务链路与 AI 产品的可验证交付。<br />课程：市场营销、管理学、消费者心理学。
+        </p>
+      </section>
+      <section class="contact wrap" id="contact">
+        <small>LET’S TALK</small>
+        <h2>聊聊问题，<br />也聊聊你的判断。</h2>
+        <div>
+          <a href="mailto:16629076367@163.com">16629076367@163.com ↗</a
+          ><a href="tel:16629076367">166 2907 6367</a
+          ><span>微信 / 153 9663 1779</span>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap">
+      <span>© 2026 林承列</span
+      ><span>项目结果依据个人项目总结；原型用于解释产品机制。</span
+      ><a href="#top">回到顶部 ↑</a>
+    </footer>
+  </body>
 </html>

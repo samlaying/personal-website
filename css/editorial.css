@@ -1441,8 +1441,18 @@ input {
 }
 .glance-what {
   font-size: 15px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--ink);
+}
+.glance-what small {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.glance-what strong {
+  display: block;
+  font-weight: 500;
 }
 .glance-result {
   font-size: 28px;

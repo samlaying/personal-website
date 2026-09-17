@@ -503,7 +503,7 @@ summary span {
   font-size: 22px;
   line-height: 1;
 }
-details[open] summary span {
+details[open] > summary > span {
   transform: rotate(45deg);
 }
 .detail-grid {

@@ -1557,3 +1557,33 @@ input {
     display: none;
   }
 }
+
+/* Case headings are labels, not the rotating disclosure icon. */
+.case-body > summary > span,
+.case-body[open] > summary > span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  transform: none;
+  flex-shrink: 0;
+}
+.case-body > summary > .case-close-label {
+  display: none;
+}
+.case-body[open] > summary > .case-open-label {
+  display: none;
+}
+.case-body[open] > summary > .case-close-label {
+  display: inline;
+}
+@media (max-width: 600px) {
+  .case-body > summary {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+  .case-body > summary small {
+    order: 4;
+    flex-basis: 100%;
+    padding-left: 20px;
+  }
+}

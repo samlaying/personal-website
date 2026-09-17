@@ -305,18 +305,68 @@
     });
   }
   autoDemo("ks-demo", [
-    { dwell: 2800, run: () => { ksMode = "before"; metric = "retention"; renderKs(); } },
-    { dwell: 3000, run: () => { ksMode = "after"; metric = "retention"; renderKs(); } },
-    { dwell: 3000, run: () => { metric = "engagement"; renderKs(); } },
-    { dwell: 3000, run: () => { metric = "click"; renderKs(); } },
+    {
+      dwell: 2800,
+      run: () => {
+        ksMode = "before";
+        metric = "retention";
+        renderKs();
+      },
+    },
+    {
+      dwell: 3000,
+      run: () => {
+        ksMode = "after";
+        metric = "retention";
+        renderKs();
+      },
+    },
+    {
+      dwell: 3000,
+      run: () => {
+        metric = "engagement";
+        renderKs();
+      },
+    },
+    {
+      dwell: 3000,
+      run: () => {
+        metric = "click";
+        renderKs();
+      },
+    },
   ]);
   autoDemo("lp-demo", [
-    { dwell: 2200, run: () => { lpStep = 0; renderLp(); } },
-    { dwell: 3000, run: () => { lpStep = 1; renderLp(); } },
-    { dwell: 3600, run: () => { lpStep = 2; renderLp(); } },
+    {
+      dwell: 2200,
+      run: () => {
+        lpStep = 0;
+        renderLp();
+      },
+    },
+    {
+      dwell: 3000,
+      run: () => {
+        lpStep = 1;
+        renderLp();
+      },
+    },
+    {
+      dwell: 3600,
+      run: () => {
+        lpStep = 2;
+        renderLp();
+      },
+    },
   ]);
   autoDemo("bd-demo", [
-    { dwell: 2400, run: () => { bdStep = 0; renderBd(); } },
+    {
+      dwell: 2400,
+      run: () => {
+        bdStep = 0;
+        renderBd();
+      },
+    },
     {
       dwell: 2600,
       run: () => {
@@ -342,7 +392,13 @@
         renderBd();
       },
     },
-    { dwell: 3400, run: () => { bdStep = 2; renderBd(); } },
+    {
+      dwell: 3400,
+      run: () => {
+        bdStep = 2;
+        renderBd();
+      },
+    },
   ]);
 
   // ── Outcome numbers count up once, when their row scrolls into view.
@@ -397,4 +453,22 @@
     blocks.forEach((block) => io.observe(block));
   }
   countUp();
+})();
+
+// ── Overview rows & anchor jumps auto-expand the collapsed case body, so
+// "跳到案例" never lands on a shut drawer.
+(function openCaseFromAnchor() {
+  function open(targetId) {
+    const caseEl = document.getElementById(targetId);
+    const body = caseEl && caseEl.querySelector("details.case-body");
+    if (body) body.open = true;
+  }
+  document
+    .querySelectorAll('a[href^="#exp-"]')
+    .forEach((link) =>
+      link.addEventListener("click", () =>
+        open(link.getAttribute("href").slice(1)),
+      ),
+    );
+  if (location.hash.startsWith("#exp-")) open(location.hash.slice(1));
 })();
